@@ -6,21 +6,22 @@ import {
     SimpleChanges,
     TemplateRef,
     ViewContainerRef, ContentChild
-} from "@angular/core";
-import {Tester, copyModule, resolveModule, createMockDeclaration, createMockImport, createPropImport} from "./Tester";
-import {RouterTestingModule} from "@angular/router/testing";
-import Renderer from "./Renderer";
-import {EditorModule, SharedModule, ToolbarModule, TreeModule} from "primeng/primeng";
-import {CommonModule} from "@angular/common";
-import {BasicComponent1, BasicModule1, BasicModule2} from "../test/BasicTests";
+} from '@angular/core';
+import {Tester, copyModule, resolveModule, createMockDeclaration, createMockImport, createPropImport} from './Tester';
+import {RouterTestingModule} from '@angular/router/testing';
+import Renderer from './Renderer';
+import {EditorModule, SharedModule, ToolbarModule, TreeModule} from 'primeng/primeng';
+import {CommonModule} from '@angular/common';
+import {BasicComponent1, BasicModule1, BasicModule2} from '../test/BasicTests';
 import {
-    InputComponent1, InputComponent2, InputComponent3, InputModule1, InputModule2, InputModule3, InputModule4,
+    InputComponent1, InputComponent2, InputComponent3,
+    InputModule1, InputModule2, InputModule3, InputModule4,
     InputModule6, InputModule7, InputModule8, InputModule9
-} from "../test/InputTests";
+} from '../test/InputTests';
 import {
     DirectiveComponent, DirectiveModule1, DirectiveModule2, EmbeddedItemDirective,
     InitNestingDirective, OutlineDirective
-} from "../test/DirectiveTests";
+} from '../test/DirectiveTests';
 
 describe('Renderer', () => {
 
@@ -34,7 +35,8 @@ describe('Renderer', () => {
             // Check the rendering output
             let rendering = await renderer.render(`<basic-component-1></basic-component-1>`, {});
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
         });
 
         it('Test #2', async () => {
@@ -48,7 +50,8 @@ describe('Renderer', () => {
             // Check the rendering output
             let rendering = await renderer.render(`<basic-component-1></basic-component-1>`, {});
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
         });
 
         it('Test #3', async () => {
@@ -62,7 +65,8 @@ describe('Renderer', () => {
             // Check the rendering output
             let rendering = await renderer.render(`<basic-component-1></basic-component-1>`, {});
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
         });
     });
 
@@ -95,10 +99,14 @@ describe('Renderer', () => {
             // Check the rendering output
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
             expect(rendering.element).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>This is Simple</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>Title 1</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<p>Text 2</p>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h3>This is Complex</h3>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>Title 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<p>Text 2</p>');
         });
 
     });
@@ -135,10 +143,14 @@ describe('Renderer', () => {
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
 
             expect(rendering.element).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>This is Simple</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>Title 1</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<p>Text 2</p>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h3>This is Complex</h3>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>Title 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<p>Text 2</p>');
         });
 
         it('Test #3 - Mount', async () => {
@@ -171,10 +183,14 @@ describe('Renderer', () => {
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
 
             expect(rendering.element).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>This is Simple</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>Title 1</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<p>Text 2</p>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h3>This is Complex</h3>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>Title 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<p>Text 2</p>');
         });
 
         it('Test #5 - Mount', async () => {
@@ -207,10 +223,14 @@ describe('Renderer', () => {
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
 
             expect(rendering.element).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>This is Simple</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>Title 1</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<p>Text 2</p>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h3>This is Complex</h3>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>Title 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<p>Text 2</p>');
         });
 
         it('Test #7 - Mount', async () => {
@@ -243,10 +263,14 @@ describe('Renderer', () => {
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
 
             expect(rendering.element).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>This is Simple</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>Title 1</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<p>Text 2</p>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h3>This is Complex</h3>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>Title 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<p>Text 2</p>');
         });
     });
 
@@ -278,12 +302,17 @@ describe('Renderer', () => {
             let renderer = new Renderer(tester);
 
             // Check the rendering output
-            let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
+            let rendering = await renderer.render(
+                `<input-component-3></input-component-3>`, {});
             expect(rendering.element).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>This is Simple</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<h1>Title 1</h1>');
-            expect(rendering.element.nativeElement.innerHTML).not.toContain('<p>Text 2</p>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h3>This is Complex</h3>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<h1>Title 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .not.toContain('<p>Text 2</p>');
         });
 
     });
@@ -377,7 +406,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>This is Simple</h1>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -386,8 +416,10 @@ describe('Renderer', () => {
                 declarations: [InputComponent1, null],
                 schemas: []
             }));
-            expect(renderer.renderModule.declarations[0]).toEqual(InputComponent1);
-            expect(renderer.renderModule.imports[0].name).toEqual(createPropImport(RouterTestingModule).name);
+            expect(renderer.renderModule.declarations[0])
+                .toEqual(InputComponent1);
+            expect(renderer.renderModule.imports[0].name)
+                .toEqual(createPropImport(RouterTestingModule).name);
         });
 
         it('RouterTestingModule #3', async () => {
@@ -410,8 +442,10 @@ describe('Renderer', () => {
                 declarations: [InputComponent1, null],
                 schemas: []
             }));
-            expect(renderer.renderModule.declarations[0]).toEqual(InputComponent1);
-            expect(renderer.renderModule.imports[0].name).toEqual(createMockImport(RouterTestingModule).name);
+            expect(renderer.renderModule.declarations[0])
+                .toEqual(InputComponent1);
+            expect(renderer.renderModule.imports[0].name)
+                .toEqual(createMockImport(RouterTestingModule).name);
         });
 
     });
@@ -505,11 +539,13 @@ describe('Renderer', () => {
                 dontMock: [CommonModule]
             });
             let renderer = new Renderer(tester);
-            let rendering = await renderer.render(`<directive-component></directive-component>`, {});
+            let rendering = await renderer.render(
+                `<directive-component></directive-component>`, {});
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<span>Default Brand</span>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<span>Default Brand</span>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -560,7 +596,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<span>Plumbline Brand</span>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<span>Plumbline Brand</span>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -600,11 +637,13 @@ describe('Renderer', () => {
                 dontMock: [CommonModule]
             });
             let renderer = new Renderer(tester);
-            let rendering = await renderer.render(`<directive-component></directive-component>`, {});
+            let rendering = await renderer.render(
+                `<directive-component></directive-component>`, {});
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<span>Default Brand</span>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<span>Default Brand</span>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -654,7 +693,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<span>Plumbline Brand</span>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<span>Plumbline Brand</span>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -705,7 +745,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<span>Default Brand</span>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<span>Default Brand</span>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -757,7 +798,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<span>Plumbline Brand</span>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<span>Plumbline Brand</span>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -806,7 +848,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -831,7 +874,7 @@ describe('Renderer', () => {
                     InitNestingDirective
                 ],
                 imports: [
-                    //DirectiveModule2
+                    // DirectiveModule2
                 ],
                 providers: []
             })
@@ -854,7 +897,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -900,7 +944,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
@@ -948,7 +993,8 @@ describe('Renderer', () => {
 
             // Check the rendering output
             expect(rendering).not.toEqual(null);
-            expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Basic Component 1</h1>');
+            expect(rendering.element.nativeElement.innerHTML)
+                .toContain('<h1>Basic Component 1</h1>');
 
             // Check the module format
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({

@@ -1,13 +1,13 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, NgModule, OnChanges, OnInit} from "@angular/core";
-import {shallow} from "./shallow";
-import {RouterTestingModule} from "@angular/router/testing";
-import {NgModel} from "@angular/forms";
-import {RouterModule, Routes} from "@angular/router";
-import {CommonModule} from "@angular/common";
-import {EditorModule, SharedModule, ToolbarModule} from "primeng/primeng";
-import {resolveModule, Tester} from "./models/Tester";
-import {DirectiveComponent, DirectiveModule1, EmbeddedItemDirective} from "./test/DirectiveTests";
-import Renderer from "./models/Renderer";
+import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, NgModule, OnChanges, OnInit} from '@angular/core';
+import {shallow} from './shallow';
+import {RouterTestingModule} from '@angular/router/testing';
+import {NgModel} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {EditorModule, SharedModule, ToolbarModule} from 'primeng/primeng';
+import {resolveModule, Tester} from './models/Tester';
+import {DirectiveComponent, DirectiveModule1, EmbeddedItemDirective} from './test/DirectiveTests';
+import Renderer from './models/Renderer';
 
 describe('Shallow', () => {
 
@@ -30,7 +30,7 @@ describe('Shallow', () => {
             <p>{{subtitleOut}}</p>
         `
     })
-    class TitleComponent implements OnInit{
+    class TitleComponent implements OnInit {
         @Input() titleIn: string;
         @Input() subtitleIn: string;
         titleOut: string;
@@ -59,7 +59,7 @@ describe('Shallow', () => {
             <span>{{counter}}</span>
         `
     })
-    class ComplexComponent implements OnInit, OnChanges{
+    class ComplexComponent implements OnInit, OnChanges {
         counter = 1;
 
         ngOnInit() {}
@@ -101,11 +101,11 @@ describe('Shallow', () => {
             <ng-template #description2><p>disabled</p></ng-template>
         `
     })
-    class TifComponent1 implements OnChanges{
+    class TifComponent1 implements OnChanges {
         enabled = false;
         enable() { this.enabled = true; }
         disable() { this.enabled = false; }
-        ngOnChanges(){}
+        ngOnChanges() {}
     }
 
     @Component({
@@ -164,7 +164,7 @@ describe('Shallow', () => {
         it('Double Binding', async () => {
 
             let titleComp = await shallow<TitleComponent>(
-                `<title-component 
+                `<title-component
                     [titleIn]="text1"
                     [subtitleIn]="text2"
                     ></title-component>`,
@@ -330,7 +330,8 @@ describe('Shallow', () => {
             expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
 
             expect(complexComp.module().schemas[0]).toEqual(CUSTOM_ELEMENTS_SCHEMA);
-            expect(resolveModule(complexComp.module().imports[0]).schemas[0]).toEqual(CUSTOM_ELEMENTS_SCHEMA);
+            expect(resolveModule(complexComp.module().imports[0]).schemas[0])
+                .toEqual(CUSTOM_ELEMENTS_SCHEMA);
         });
     });
 

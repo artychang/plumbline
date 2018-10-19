@@ -1,7 +1,7 @@
-import {Component, NgModule} from "@angular/core";
-import {Tester, copyModule, resolveModule, createMockDeclaration, createMockImport, createPropImport} from "./Tester";
-import {RouterTestingModule} from "@angular/router/testing";
-import {RouterModule, Routes} from "@angular/router";
+import {Component, NgModule} from '@angular/core';
+import {Tester, copyModule, resolveModule, createMockDeclaration, createMockImport, createPropImport} from './Tester';
+import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule, Routes} from '@angular/router';
 
 describe('Tester', () => {
 
@@ -128,8 +128,10 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createPropImport(TestComponent2).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createPropImport(TestComponent2).name);
         });
 
         it('Complete Module Generation: Declaration 5', () => {
@@ -146,9 +148,12 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createPropImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createPropImport(TestComponent3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createPropImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createPropImport(TestComponent3).name);
         });
 
         it('Complete Module Generation: Declaration 6', () => {
@@ -165,9 +170,12 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createPropImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createPropImport(TestComponent3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createPropImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createPropImport(TestComponent3).name);
         });
 
         it('Complete Module Generation: Declaration 7', () => {
@@ -187,9 +195,12 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createPropImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createPropImport(TestComponent3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createPropImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createPropImport(TestComponent3).name);
         });
 
         it('Complete Module Generation: Declaration 8', () => {
@@ -209,9 +220,12 @@ describe('Tester', () => {
                 schemas: []
             }));
 
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createPropImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createPropImport(TestComponent3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createPropImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createPropImport(TestComponent3).name);
 
         });
 
@@ -229,9 +243,12 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestModule1).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestModule1).name);
         });
 
         it('Complete Module Generation: Import 2', () => {
@@ -248,9 +265,12 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestModule1).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestModule1).name);
         });
 
         it('Complete Module Generation: Import 3', () => {
@@ -267,10 +287,14 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestComponent3).name);
-            expect(setup.getCompleteModule().imports[2].name).toEqual(createMockImport(TestModule2).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestComponent3).name);
+            expect(setup.getCompleteModule().imports[2].name)
+                .toEqual(createMockImport(TestModule2).name);
         });
 
         it('Complete Module Generation: Import 4', () => {
@@ -287,12 +311,18 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestComponent3).name);
-            expect(setup.getCompleteModule().imports[2].name).toEqual(createMockImport(TestModule2).name);
-            expect(setup.getCompleteModule().imports[3].name).toEqual(createMockImport(TestComponent4).name);
-            expect(setup.getCompleteModule().imports[4].name).toEqual(createMockImport(TestModule3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestComponent3).name);
+            expect(setup.getCompleteModule().imports[2].name)
+                .toEqual(createMockImport(TestModule2).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[4].name)
+                .toEqual(createMockImport(TestModule3).name);
         });
 
         it('Complete Module Generation: Import 5', () => {
@@ -312,12 +342,18 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestComponent3).name);
-            expect(setup.getCompleteModule().imports[2].name).toEqual(createMockImport(TestModule2).name);
-            expect(setup.getCompleteModule().imports[3].name).toEqual(createMockImport(TestComponent4).name);
-            expect(setup.getCompleteModule().imports[4].name).toEqual(createMockImport(TestModule3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestComponent3).name);
+            expect(setup.getCompleteModule().imports[2].name)
+                .toEqual(createMockImport(TestModule2).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[4].name)
+                .toEqual(createMockImport(TestModule3).name);
         });
 
         it('Complete Module Generation: Import 6', () => {
@@ -334,13 +370,20 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestModule1).name);
-            expect(setup.getCompleteModule().imports[2].name).toEqual(createMockImport(TestComponent3).name);
-            expect(setup.getCompleteModule().imports[3].name).toEqual(createMockImport(TestModule2).name);
-            expect(setup.getCompleteModule().imports[4].name).toEqual(createMockImport(TestComponent4).name);
-            expect(setup.getCompleteModule().imports[5].name).toEqual(createMockImport(TestModule3).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestModule1).name);
+            expect(setup.getCompleteModule().imports[2].name)
+                .toEqual(createMockImport(TestComponent3).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(createMockImport(TestModule2).name);
+            expect(setup.getCompleteModule().imports[4].name)
+                .toEqual(createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[5].name)
+                .toEqual(createMockImport(TestModule3).name);
         });
 
 
@@ -358,11 +401,16 @@ describe('Tester', () => {
                 exports: [],
                 schemas: []
             }));
-            expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
-            expect(setup.getCompleteModule().imports[0].name).toEqual(createMockImport(TestComponent2).name);
-            expect(setup.getCompleteModule().imports[1].name).toEqual(createMockImport(TestComponent3).name);
-            expect(setup.getCompleteModule().imports[2].name).toEqual(createMockImport(TestComponent4).name);
-            expect(setup.getCompleteModule().imports[3].name).toEqual(createMockImport(TestModule4).name);
+            expect(setup.getCompleteModule().declarations[0])
+                .toEqual(TestComponent1);
+            expect(setup.getCompleteModule().imports[0].name)
+                .toEqual(createMockImport(TestComponent2).name);
+            expect(setup.getCompleteModule().imports[1].name)
+                .toEqual(createMockImport(TestComponent3).name);
+            expect(setup.getCompleteModule().imports[2].name)
+                .toEqual(createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(createMockImport(TestModule4).name);
         });
     });
 
