@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build": "tsc"
   },
   "typescript": {
     "definition": "dist/index"

@@ -1,0 +1,11 @@
+import { JitReflector } from './compilerReflector';
+import { DirectiveResolver, PipeResolver } from '@angular/compiler';
+declare let jitReflector: JitReflector;
+declare let pipeResolver: PipeResolver;
+declare let directiveResolver: DirectiveResolver;
+export { jitReflector, pipeResolver, directiveResolver };
+export declare function isValueProvider(provider: any): boolean;
+export declare function isClassProvider(provider: any): boolean;
+export declare function isModuleWithProviders(thing: any): boolean;
+export declare function isNgModule(thing: any): boolean;
+export declare function resolveNgModule(thing: any): any;
