@@ -1,0 +1,57 @@
+{
+  "name": "plumbline",
+  "version": "0.0.1",
+  "description": "Component Testing utilities for efficient Angular unit testing",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "ng test",
+    "lint": "ng lint"
+  },
+  "typescript": {
+    "definition": "dist/index"
+  },
+  "dependencies": {
+    "@angular/common": "5.x",
+    "@angular/compiler": "5.x",
+    "@angular/core": "5.x",
+    "@angular/forms": "5.x",
+    "@angular/platform-browser": "5.x",
+    "classlist.js": "^1.1.20150312",
+    "ng-mocks": "^5.3.0",
+    "rxjs": "^6.2.1",
+    "rxjs-compat": "^6.2.1",
+    "web-animations-js": "^2.3.1",
+    "zone.js": "^0.8.26"
+  },
+  "typings": "dist/index",
+  "author": "Arthur Chang",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.6.8",
+    "@angular/animations": "5.x",
+    "@angular/cli": "^6.0.8",
+    "@angular/compiler-cli": "5.x",
+    "@angular/platform-browser-dynamic": "5.x",
+    "@angular/router": "5.x.x",
+    "@types/jasmine": "^2.8.8",
+    "angular-mocks": "^1.7.2",
+    "codelyzer": "^4.3.0",
+    "jasmine-core": "^3.1.0",
+    "jsdom": "11.11.0",
+    "jsdom-global": "3.0.2",
+    "karma": "^2.0.3",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "^2.0.1",
+    "karma-htmlfile-reporter": "^0.3.5",
+    "karma-jasmine": "^1.1.2",
+    "karma-jasmine-html-reporter": "^1.1.0",
+    "karma-junit-reporter": "^1.2.0",
+    "karma-webdriver-launcher": "^1.0.5",
+    "primeng": "5.0.2",
+    "ts-node": "^6.1.1",
+    "tslint": "^5.11.0",
+    "typescript": "^2.9.2"
+  }
+}
