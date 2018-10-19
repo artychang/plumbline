@@ -1,6 +1,6 @@
 {
   "name": "plumbline",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Component Testing utilities for efficient Angular unit testing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
