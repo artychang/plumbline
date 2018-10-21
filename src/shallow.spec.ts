@@ -536,7 +536,7 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tifComp = await shallow<DirectiveComponent>(
                 `<directive-component></directive-component>`,
@@ -546,7 +546,7 @@ describe('Shallow', () => {
                             CommonModule,
                             ToolbarModule,
                             DirectiveModule1,
-                            AWBasicNavigatorModule
+                            NavigatorModule
                         ]
                     }
                 });
@@ -571,7 +571,7 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tifComp = await shallow<DirectiveComponent>(
                 `<directive-component>
@@ -584,7 +584,7 @@ describe('Shallow', () => {
                         imports: [
                             CommonModule,
                             ToolbarModule,
-                            AWBasicNavigatorModule
+                            NavigatorModule
                         ]
                     }
                 });
@@ -611,7 +611,7 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tifComp = await shallow<SimpleComponent>(
                 `<simple-component></simple-component>`,
@@ -620,7 +620,7 @@ describe('Shallow', () => {
                         imports: [
                             CommonModule,
                             ToolbarModule,
-                            AWBasicNavigatorModule
+                            NavigatorModule
                         ]
                     },
                 });
@@ -648,14 +648,14 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule1 {}
+            class NavigatorModule1 {}
 
             @NgModule({
                 imports: [
-                    AWBasicNavigatorModule1
+                    NavigatorModule1
                 ],
             })
-            class AWBasicNavigatorModule2 {}
+            class NavigatorModule2 {}
 
             let tifComp = await shallow<SimpleComponent>(
                 `<simple-component></simple-component>`,
@@ -664,7 +664,7 @@ describe('Shallow', () => {
                         imports: [
                             CommonModule,
                             ToolbarModule,
-                            AWBasicNavigatorModule2
+                            NavigatorModule2
                         ]
                     },
                 });
@@ -689,14 +689,14 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule1 {}
+            class NavigatorModule1 {}
 
             @NgModule({
                 imports: [
-                    AWBasicNavigatorModule1
+                    NavigatorModule1
                 ],
             })
-            class AWBasicNavigatorModule2 {}
+            class NavigatorModule2 {}
 
             let tifComp = await shallow<SimpleComponent>(
                 `<simple-component></simple-component>`,
@@ -705,7 +705,7 @@ describe('Shallow', () => {
                         imports: [
                             CommonModule,
                             ToolbarModule,
-                            AWBasicNavigatorModule2
+                            NavigatorModule2
                         ]
                     },
                 });
@@ -733,14 +733,14 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule1 {}
+            class NavigatorModule1 {}
 
             @NgModule({
                 imports: [
-                    AWBasicNavigatorModule1
+                    NavigatorModule1
                 ],
             })
-            class AWBasicNavigatorModule2 {}
+            class NavigatorModule2 {}
 
             let tifComp = await shallow<SimpleComponent>(
                 `<simple-component></simple-component>`,
@@ -749,7 +749,7 @@ describe('Shallow', () => {
                         imports: [
                             CommonModule,
                             ToolbarModule,
-                            AWBasicNavigatorModule2
+                            NavigatorModule2
                         ]
                     },
                 });
@@ -789,7 +789,7 @@ describe('Shallow', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tifComp = await shallow<DirectiveComponent2>(
                 `<directive-component-2></directive-component-2>`,
@@ -798,7 +798,7 @@ describe('Shallow', () => {
                         imports: [
                             CommonModule,
                             ToolbarModule,
-                            AWBasicNavigatorModule
+                            NavigatorModule
                         ]
                     }
                 });

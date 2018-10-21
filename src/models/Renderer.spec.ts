@@ -7,7 +7,11 @@ import {
     TemplateRef,
     ViewContainerRef, ContentChild
 } from '@angular/core';
-import {Tester, copyModule, resolveModule, createMockDeclaration, createMockImport, createPropImport} from './Tester';
+import {
+    Tester, copyModule, resolveModule,
+    createMockDeclaration, createMockImport,
+    createPropImport
+} from './Tester';
 import {RouterTestingModule} from '@angular/router/testing';
 import Renderer from './Renderer';
 import {EditorModule, SharedModule, ToolbarModule, TreeModule} from 'primeng/primeng';
@@ -528,12 +532,12 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -575,12 +579,12 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -626,12 +630,12 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -672,12 +676,12 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -725,7 +729,7 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(DirectiveComponent, {
                 mountModule: {
@@ -733,7 +737,7 @@ describe('Renderer', () => {
                         CommonModule,
                         ToolbarModule,
                         DirectiveModule1,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -775,14 +779,14 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(DirectiveComponent, {
                 mountModule: {
                     imports: [
                         CommonModule,
                         ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -828,14 +832,14 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWBasicNavigatorModule {}
+            class NavigatorModule {}
 
             let tester = new Tester(BasicComponent1, {
                 mountModule: {
                     imports: [
                         CommonModule,
                         ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -878,13 +882,13 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWOutlineForModule {}
+            class OutlineModule {}
 
             let tester = new Tester(BasicComponent1, {
                 mountModule: {
                     imports: [
                         CommonModule,
-                        AWOutlineForModule
+                        OutlineModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -925,13 +929,13 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWOutlineForModule {}
+            class OutlineModule {}
 
             let tester = new Tester(BasicComponent1, {
                 mountModule: {
                     imports: [
                         CommonModule,
-                        AWOutlineForModule
+                        OutlineModule
                     ]
                 },
                 dontMock: [CommonModule]
@@ -975,13 +979,13 @@ describe('Renderer', () => {
                 ],
                 providers: []
             })
-            class AWOutlineForModule {}
+            class OutlineModule {}
 
             let tester = new Tester(BasicComponent1, {
                 mountModule: {
                     imports: [
                         CommonModule,
-                        AWOutlineForModule
+                        OutlineModule
                     ]
                 },
                 dontMock: [CommonModule]

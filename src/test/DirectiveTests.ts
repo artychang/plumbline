@@ -87,7 +87,7 @@ export class DirectiveComponent {
 export class DirectiveModule1 {}
 
 @Component({
-    selector: 'aw-outline-for, [awOutlineFor]',
+    selector: 'outline-component, [outlineComponent]',
     template: `
     <ng-template initNesting [setLevel]="nestingLevel" [setCurrrentItem]="item">
         <p>Outline Directive 2</p>

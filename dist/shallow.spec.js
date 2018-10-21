@@ -442,9 +442,9 @@ describe('Shallow', () => {
     });
     describe('Edge Case: PrimeNg Directive', () => {
         it('Test #1 Default', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -461,14 +461,14 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tifComp = await shallow_1.shallow(`<directive-component></directive-component>`, DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
                         DirectiveTests_1.DirectiveModule1,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 }
             });
@@ -476,9 +476,9 @@ describe('Shallow', () => {
             expect(tifComp.element().innerHTML).toContain('<span>Default Brand</span>');
         });
         it('Test #1 Branded', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -493,7 +493,7 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tifComp = await shallow_1.shallow(`<directive-component>
                     <ng-template #brand>
                         <span>Plumbline Brand</span>
@@ -503,7 +503,7 @@ describe('Shallow', () => {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 }
             });
@@ -511,9 +511,9 @@ describe('Shallow', () => {
             expect(tifComp.element().innerHTML).toContain('<span>Plumbline Brand</span>');
         });
         it('Test #1 None Case Mount', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -528,13 +528,13 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tifComp = await shallow_1.shallow(`<simple-component></simple-component>`, SimpleComponent, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
             });
@@ -542,9 +542,9 @@ describe('Shallow', () => {
             expect(tifComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
         });
         it('Test #1 None Case Mount Duplicates', async () => {
-            let AWBasicNavigatorModule1 = class AWBasicNavigatorModule1 {
+            let NavigatorModule1 = class NavigatorModule1 {
             };
-            AWBasicNavigatorModule1 = __decorate([
+            NavigatorModule1 = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -562,22 +562,22 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule1);
-            let AWBasicNavigatorModule2 = class AWBasicNavigatorModule2 {
+            ], NavigatorModule1);
+            let NavigatorModule2 = class NavigatorModule2 {
             };
-            AWBasicNavigatorModule2 = __decorate([
+            NavigatorModule2 = __decorate([
                 core_1.NgModule({
                     imports: [
-                        AWBasicNavigatorModule1
+                        NavigatorModule1
                     ],
                 })
-            ], AWBasicNavigatorModule2);
+            ], NavigatorModule2);
             let tifComp = await shallow_1.shallow(`<simple-component></simple-component>`, SimpleComponent, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule2
+                        NavigatorModule2
                     ]
                 },
             });
@@ -585,9 +585,9 @@ describe('Shallow', () => {
             expect(tifComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
         });
         it('Test #1 None Case Mock', async () => {
-            let AWBasicNavigatorModule1 = class AWBasicNavigatorModule1 {
+            let NavigatorModule1 = class NavigatorModule1 {
             };
-            AWBasicNavigatorModule1 = __decorate([
+            NavigatorModule1 = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -602,22 +602,22 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule1);
-            let AWBasicNavigatorModule2 = class AWBasicNavigatorModule2 {
+            ], NavigatorModule1);
+            let NavigatorModule2 = class NavigatorModule2 {
             };
-            AWBasicNavigatorModule2 = __decorate([
+            NavigatorModule2 = __decorate([
                 core_1.NgModule({
                     imports: [
-                        AWBasicNavigatorModule1
+                        NavigatorModule1
                     ],
                 })
-            ], AWBasicNavigatorModule2);
+            ], NavigatorModule2);
             let tifComp = await shallow_1.shallow(`<simple-component></simple-component>`, SimpleComponent, {
                 mockModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule2
+                        NavigatorModule2
                     ]
                 },
             });
@@ -625,9 +625,9 @@ describe('Shallow', () => {
             expect(tifComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
         });
         it('Test #1 None Case Mock Duplicates', async () => {
-            let AWBasicNavigatorModule1 = class AWBasicNavigatorModule1 {
+            let NavigatorModule1 = class NavigatorModule1 {
             };
-            AWBasicNavigatorModule1 = __decorate([
+            NavigatorModule1 = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -645,22 +645,22 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule1);
-            let AWBasicNavigatorModule2 = class AWBasicNavigatorModule2 {
+            ], NavigatorModule1);
+            let NavigatorModule2 = class NavigatorModule2 {
             };
-            AWBasicNavigatorModule2 = __decorate([
+            NavigatorModule2 = __decorate([
                 core_1.NgModule({
                     imports: [
-                        AWBasicNavigatorModule1
+                        NavigatorModule1
                     ],
                 })
-            ], AWBasicNavigatorModule2);
+            ], NavigatorModule2);
             let tifComp = await shallow_1.shallow(`<simple-component></simple-component>`, SimpleComponent, {
                 mockModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule2
+                        NavigatorModule2
                     ]
                 },
             });
@@ -682,9 +682,9 @@ describe('Shallow', () => {
                 `
                 })
             ], DirectiveComponent2);
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -701,13 +701,13 @@ describe('Shallow', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tifComp = await shallow_1.shallow(`<directive-component-2></directive-component-2>`, DirectiveComponent2, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 }
             });

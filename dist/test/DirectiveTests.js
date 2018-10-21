@@ -109,7 +109,7 @@ let OutlineDirective = class OutlineDirective {
 };
 OutlineDirective = __decorate([
     core_1.Component({
-        selector: 'aw-outline-for, [awOutlineFor]',
+        selector: 'outline-component, [outlineComponent]',
         template: `
     <ng-template initNesting [setLevel]="nestingLevel" [setCurrrentItem]="item">
         <p>Outline Directive 2</p>

@@ -429,9 +429,9 @@ describe('Renderer', () => {
     });
     describe('Edge Case: PrimeNg Directive', () => {
         it('Level #1 Default', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -447,11 +447,11 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -473,9 +473,9 @@ describe('Renderer', () => {
             }));
         });
         it('Level #1 Branded', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -491,11 +491,11 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -523,9 +523,9 @@ describe('Renderer', () => {
             }));
         });
         it('Level #2 Default', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -540,11 +540,11 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -566,9 +566,9 @@ describe('Renderer', () => {
             }));
         });
         it('Level #2 Branded', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -583,11 +583,11 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -615,9 +615,9 @@ describe('Renderer', () => {
             }));
         });
         it('Level #3 Default', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -634,14 +634,14 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
                         DirectiveTests_1.DirectiveModule1,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -665,9 +665,9 @@ describe('Renderer', () => {
             }));
         });
         it('Level #3 Reduced Component', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -682,13 +682,13 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(DirectiveTests_1.DirectiveComponent, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -716,9 +716,9 @@ describe('Renderer', () => {
             }));
         });
         it('Level #3 Different Component', async () => {
-            let AWBasicNavigatorModule = class AWBasicNavigatorModule {
+            let NavigatorModule = class NavigatorModule {
             };
-            AWBasicNavigatorModule = __decorate([
+            NavigatorModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.DirectiveComponent,
@@ -733,13 +733,13 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWBasicNavigatorModule);
+            ], NavigatorModule);
             let tester = new Tester_1.Tester(BasicTests_1.BasicComponent1, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
                         primeng_1.ToolbarModule,
-                        AWBasicNavigatorModule
+                        NavigatorModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -763,9 +763,9 @@ describe('Renderer', () => {
             }));
         });
         it('Group #1', async () => {
-            let AWOutlineForModule = class AWOutlineForModule {
+            let OutlineModule = class OutlineModule {
             };
-            AWOutlineForModule = __decorate([
+            OutlineModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.OutlineDirective,
@@ -780,12 +780,12 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWOutlineForModule);
+            ], OutlineModule);
             let tester = new Tester_1.Tester(BasicTests_1.BasicComponent1, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
-                        AWOutlineForModule
+                        OutlineModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -809,9 +809,9 @@ describe('Renderer', () => {
             }));
         });
         it('Group #2', async () => {
-            let AWOutlineForModule = class AWOutlineForModule {
+            let OutlineModule = class OutlineModule {
             };
-            AWOutlineForModule = __decorate([
+            OutlineModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.OutlineDirective
@@ -824,12 +824,12 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWOutlineForModule);
+            ], OutlineModule);
             let tester = new Tester_1.Tester(BasicTests_1.BasicComponent1, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
-                        AWOutlineForModule
+                        OutlineModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
@@ -853,9 +853,9 @@ describe('Renderer', () => {
             }));
         });
         it('Group #2 Duplicates', async () => {
-            let AWOutlineForModule = class AWOutlineForModule {
+            let OutlineModule = class OutlineModule {
             };
-            AWOutlineForModule = __decorate([
+            OutlineModule = __decorate([
                 core_1.NgModule({
                     declarations: [
                         DirectiveTests_1.OutlineDirective,
@@ -871,12 +871,12 @@ describe('Renderer', () => {
                     ],
                     providers: []
                 })
-            ], AWOutlineForModule);
+            ], OutlineModule);
             let tester = new Tester_1.Tester(BasicTests_1.BasicComponent1, {
                 mountModule: {
                     imports: [
                         common_1.CommonModule,
-                        AWOutlineForModule
+                        OutlineModule
                     ]
                 },
                 dontMock: [common_1.CommonModule]
