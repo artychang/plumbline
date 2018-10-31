@@ -1,2 +1,2 @@
-export { shallow } from './shallow';
-export { ShallowWrapper } from './ShallowWrapper';
+export { mount } from './mount';
+export { PlumblineWrapper } from './PlumblineWrapper';

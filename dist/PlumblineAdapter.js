@@ -13,21 +13,21 @@ class PlumblineAdapter {
         this.options = {};
     }
     /**
-     *. Create a fully mounted renderer
+     *. Create a mounted renderer
      */
-    createMountRenderer(options) {
-        return null;
-    }
-    /**
-    *. Create a shallow renderer
-    */
-    createShallowRenderer(optionsRender) {
+    createMountRenderer(optionsRender) {
         return {
             render(element, options, testComponent, testModule) {
                 let renderer = new PlumblineRenderer_1.default(testComponent, testModule);
                 return renderer.render(element, options);
             }
         };
+    }
+    /**
+    *. Create a shallow renderer
+    */
+    createShallowRenderer(optionsRender) {
+        return null;
     }
     createRenderer(options) {
         switch (options.mode) {

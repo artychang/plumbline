@@ -1,5 +1,5 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, NgModule, OnChanges, OnInit} from '@angular/core';
-import {shallow} from './shallow';
+import {mount} from './mount';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NgModel} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
@@ -9,7 +9,7 @@ import {resolveModule, Tester} from './models/Tester';
 import {DirectiveComponent, DirectiveModule1, EmbeddedItemDirective} from './test/DirectiveTests';
 import Renderer from './models/Renderer';
 
-describe('Shallow', () => {
+describe('Mount', () => {
 
     @Component({
         selector: 'test-component-1',
@@ -127,7 +127,7 @@ describe('Shallow', () => {
     describe('Simple Component', () => {
 
         it('Simple Render', async () => {
-            let simpleComp = await shallow<SimpleComponent>(
+            let simpleComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {}, {}
             );
@@ -138,7 +138,7 @@ describe('Shallow', () => {
 
         it('Single Binding', async () => {
 
-            let titleComp = await shallow<TitleComponent>(
+            let titleComp = await mount<TitleComponent>(
                 `<title-component [titleIn]="currentTitle"></title-component>`,
                 TitleComponent, {}, {
                     bind: {
@@ -152,7 +152,7 @@ describe('Shallow', () => {
 
         it('Single Binding Direct', async () => {
 
-            let titleComp = await shallow<TitleComponent>(
+            let titleComp = await mount<TitleComponent>(
                 `<title-component [titleIn]="'Title 1'"></title-component>`,
                 TitleComponent
             );
@@ -163,7 +163,7 @@ describe('Shallow', () => {
 
         it('Double Binding', async () => {
 
-            let titleComp = await shallow<TitleComponent>(
+            let titleComp = await mount<TitleComponent>(
                 `<title-component
                     [titleIn]="text1"
                     [subtitleIn]="text2"
@@ -184,7 +184,7 @@ describe('Shallow', () => {
     describe('Complex Component - Load Declarations', () => {
 
         it('Simple Mock Render - Not Real Mounting', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mockModule: {
@@ -199,7 +199,7 @@ describe('Shallow', () => {
         });
 
         it('Simple Mount Render - Real Mounting', async () => {
-            let complexComp = await shallow(
+            let complexComp = await mount(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -217,7 +217,7 @@ describe('Shallow', () => {
         });
 
         it('Simple Mount Render - Mixed Mounting', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mockModule: {
@@ -241,7 +241,7 @@ describe('Shallow', () => {
     describe('Complex Component - Load Imports', () => {
 
         it('Import Module - Mock', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mockModule: {
@@ -256,7 +256,7 @@ describe('Shallow', () => {
         });
 
         it('Import Module - Mount', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -274,7 +274,7 @@ describe('Shallow', () => {
         });
 
         it('Import Module - Full #1', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -292,7 +292,7 @@ describe('Shallow', () => {
         });
 
         it('Import Module - Full #2', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -311,7 +311,7 @@ describe('Shallow', () => {
         });
 
         it('Import Module Schema - Full #3', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -338,7 +338,7 @@ describe('Shallow', () => {
     describe('Complex Component - Access Component Internals', () => {
 
         it('Test #1', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mockModule: {
@@ -370,7 +370,7 @@ describe('Shallow', () => {
 
         it('RouterTestingModule #1', async () => {
 
-            let simpleComp = await shallow<SimpleComponent>(
+            let simpleComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mountModule: {
@@ -382,7 +382,7 @@ describe('Shallow', () => {
         });
 
         it('RouterTestingModule #2', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -403,7 +403,7 @@ describe('Shallow', () => {
                 }
             ];
 
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mockModule: {
@@ -422,7 +422,7 @@ describe('Shallow', () => {
 
         it('NgModel #1', async () => {
 
-            let simpleComp = await shallow<SimpleComponent>(
+            let simpleComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mockModule: {
@@ -434,7 +434,7 @@ describe('Shallow', () => {
         });
 
         it('NgModel #2', async () => {
-            let complexComp = await shallow<ComplexComponent>(
+            let complexComp = await mount<ComplexComponent>(
                 `<complex-component></complex-component>`,
                 ComplexComponent, {
                     mountModule: {
@@ -450,7 +450,7 @@ describe('Shallow', () => {
     describe('Edge Case: Tif Component', () => {
 
         it('Test #1', async () => {
-            let tifComp = await shallow<TifComponent1>(
+            let tifComp = await mount<TifComponent1>(
                 `<tif-component-1></tif-component-1>`,
                 TifComponent1, {
                     mountModule: {
@@ -472,7 +472,7 @@ describe('Shallow', () => {
         });
 
         it('Test #2', async () => {
-            let tifComp = await shallow<TifComponent2>(
+            let tifComp = await mount<TifComponent2>(
                 `<tif-component-2></tif-component-2>`,
                 TifComponent2, {
                     mountModule: {
@@ -490,7 +490,7 @@ describe('Shallow', () => {
     describe('Edge Case: PrimeNg Component', () => {
 
         it('SharedModule #1', async () => {
-            let tifComp = await shallow<SimpleComponent>(
+            let tifComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mountModule: {
@@ -503,7 +503,7 @@ describe('Shallow', () => {
         });
 
         it('SharedModule #2', async () => {
-            let tifComp = await shallow<SimpleComponent>(
+            let tifComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mountModule: {
@@ -538,7 +538,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule {}
 
-            let tifComp = await shallow<DirectiveComponent>(
+            let tifComp = await mount<DirectiveComponent>(
                 `<directive-component></directive-component>`,
                 DirectiveComponent, {
                     mountModule: {
@@ -573,7 +573,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule {}
 
-            let tifComp = await shallow<DirectiveComponent>(
+            let tifComp = await mount<DirectiveComponent>(
                 `<directive-component>
                     <ng-template #brand>
                         <span>Plumbline Brand</span>
@@ -613,7 +613,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule {}
 
-            let tifComp = await shallow<SimpleComponent>(
+            let tifComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mountModule: {
@@ -657,7 +657,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule2 {}
 
-            let tifComp = await shallow<SimpleComponent>(
+            let tifComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mountModule: {
@@ -698,7 +698,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule2 {}
 
-            let tifComp = await shallow<SimpleComponent>(
+            let tifComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mockModule: {
@@ -742,7 +742,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule2 {}
 
-            let tifComp = await shallow<SimpleComponent>(
+            let tifComp = await mount<SimpleComponent>(
                 `<simple-component></simple-component>`,
                 SimpleComponent, {
                     mockModule: {
@@ -791,7 +791,7 @@ describe('Shallow', () => {
             })
             class NavigatorModule {}
 
-            let tifComp = await shallow<DirectiveComponent2>(
+            let tifComp = await mount<DirectiveComponent2>(
                 `<directive-component-2></directive-component-2>`,
                 DirectiveComponent2, {
                     mountModule: {

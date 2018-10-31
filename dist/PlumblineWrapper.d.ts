@@ -1,40 +1,40 @@
-export declare class ShallowWrapper<T> {
+export declare class PlumblineWrapper<T> {
     private renderer;
     private renderPromise;
     private rendering;
     private currentElement;
     constructor();
     /**
-     * Create ShallowWrapper
+     * Create PlumblineWrapper
      * @param nodes
      * @param testComponent
      * @param testModule
      * @param options
-     * @returns {ShallowWrapper<T>}
+     * @returns {PlumblineWrapper<T>}
      */
-    create(nodes: any, testComponent: T, testModule: any, options: any): ShallowWrapper<T>;
+    create(nodes: any, testComponent: T, testModule: any, options: any): PlumblineWrapper<T>;
     private existing;
     /**
      * Render the Component
-     * @returns {Promise<ShallowWrapper<T>>}
+     * @returns {Promise<PlumblineWrapper<T>>}
      */
-    render(): Promise<ShallowWrapper<T>>;
+    render(): Promise<PlumblineWrapper<T>>;
     private checkRender;
     /**
-     * Get ElementRef of ShallowWrapper
-     * @return ElementRef of current ShallowWrapper
+     * Get ElementRef of PlumblineWrapper
+     * @return ElementRef of current PlumblineWrapper
      */
     element(): any;
     /**
-     * Find child element within ShallowWrapper
+     * Find child element within PlumblineWrapper
      * @return child elements matched
      */
-    find(cssOrDirective: any): Array<ShallowWrapper<T>>;
+    find(cssOrDirective: any): Array<PlumblineWrapper<T>>;
     /**
-     * Find parent element of ShallowWrapper
-     * @return parent of ShallowWrapper
+     * Find parent element of PlumblineWrapper
+     * @return parent of PlumblineWrapper
      */
-    parent(): ShallowWrapper<T>;
+    parent(): PlumblineWrapper<T>;
     /**
      * Get the instance of this Component in TestBed
      * @returns instance of Component in TestBed
@@ -57,7 +57,7 @@ export declare class ShallowWrapper<T> {
     tester(): any;
     /**
      * Get the module used in this Component instance test
-     * @returns complete module put together by ShallowWrapper
+     * @returns complete module put together by PlumblineWrapper
      */
     module(): any;
 }

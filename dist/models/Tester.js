@@ -483,7 +483,7 @@ function createMockProvider(mockedClass) {
         // mock and replace all functions of this class
         MockProvider.prototype[m] = () => {
             // send an understandable message if this function is vital to component operation
-            return 'Plumbline::shallow function called: ' + mockedClass.constructor.name + '.' + m;
+            return 'Plumbline::mount function called: ' + mockedClass.constructor.name + '.' + m;
         };
     });
     // methods.forEach(m => spyOn(mockedClass.prototype, m));

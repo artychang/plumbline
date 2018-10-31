@@ -2,22 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PlumblineAdapter_1 = require("./PlumblineAdapter");
 const platform_browser_1 = require("@angular/platform-browser");
-class ShallowWrapper {
+class PlumblineWrapper {
     constructor() {
         this.renderer = null;
         this.renderPromise = null;
         this.rendering = null;
         this.currentElement = null;
-        // Generate a renderer for shallow operation
-        this.renderer = (new PlumblineAdapter_1.default()).createRenderer({ mode: 'shallow' });
+        // Generate a renderer for mount operation
+        this.renderer = (new PlumblineAdapter_1.default()).createRenderer({ mode: 'mount' });
     }
     /**
-     * Create ShallowWrapper
+     * Create PlumblineWrapper
      * @param nodes
      * @param testComponent
      * @param testModule
      * @param options
-     * @returns {ShallowWrapper<T>}
+     * @returns {PlumblineWrapper<T>}
      */
     create(nodes, testComponent, testModule, options) {
         this.renderPromise = this.renderer.render(nodes, options ? options : {}, testComponent, testModule ? testModule : {});
@@ -31,7 +31,7 @@ class ShallowWrapper {
     }
     /**
      * Render the Component
-     * @returns {Promise<ShallowWrapper<T>>}
+     * @returns {Promise<PlumblineWrapper<T>>}
      */
     async render() {
         return new Promise((resolve, reject) => {
@@ -45,20 +45,20 @@ class ShallowWrapper {
     }
     checkRender() {
         if (this.rendering == null) {
-            throw new Error('Use render() and await on ShallowWrapper ' +
+            throw new Error('Use render() and await on PlumblineWrapper ' +
                 'to complete the rendering process.');
         }
     }
     /**
-     * Get ElementRef of ShallowWrapper
-     * @return ElementRef of current ShallowWrapper
+     * Get ElementRef of PlumblineWrapper
+     * @return ElementRef of current PlumblineWrapper
      */
     element() {
         this.checkRender();
         return this.currentElement.nativeNode;
     }
     /**
-     * Find child element within ShallowWrapper
+     * Find child element within PlumblineWrapper
      * @return child elements matched
      */
     find(cssOrDirective) {
@@ -73,20 +73,20 @@ class ShallowWrapper {
         let matches = this.currentElement.queryAll(query);
         if (matches.length && matches[0] === this.currentElement) {
             throw new Error(`Don't use 'find' to search for your test component, ` +
-                `it is automatically returned by the shallow renderer`);
+                `it is automatically returned by the mount renderer`);
         }
         let wrapperArray = [];
         matches.forEach((elem) => {
-            wrapperArray.push((new ShallowWrapper()).existing(this.renderPromise, this.rendering, elem));
+            wrapperArray.push((new PlumblineWrapper()).existing(this.renderPromise, this.rendering, elem));
         });
         return wrapperArray;
     }
     /**
-     * Find parent element of ShallowWrapper
-     * @return parent of ShallowWrapper
+     * Find parent element of PlumblineWrapper
+     * @return parent of PlumblineWrapper
      */
     parent() {
-        return (new ShallowWrapper()).existing(this.renderPromise, this.rendering, this.currentElement.parent);
+        return (new PlumblineWrapper()).existing(this.renderPromise, this.rendering, this.currentElement.parent);
     }
     /**
      * Get the instance of this Component in TestBed
@@ -126,10 +126,10 @@ class ShallowWrapper {
     }
     /**
      * Get the module used in this Component instance test
-     * @returns complete module put together by ShallowWrapper
+     * @returns complete module put together by PlumblineWrapper
      */
     module() {
         return this.rendering.tester.completeModule;
     }
 }
-exports.ShallowWrapper = ShallowWrapper;
+exports.PlumblineWrapper = PlumblineWrapper;

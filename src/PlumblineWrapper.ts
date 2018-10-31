@@ -3,7 +3,7 @@ import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import Rendering from './models/Rendering';
 
-export class ShallowWrapper<T>
+export class PlumblineWrapper<T>
 {
     private renderer: any = null;
     private renderPromise: Promise<Rendering> = null;
@@ -12,19 +12,19 @@ export class ShallowWrapper<T>
 
 
     constructor() {
-        // Generate a renderer for shallow operation
-        this.renderer = (new PlumblineAdapter()).createRenderer({mode: 'shallow'});
+        // Generate a renderer for mount operation
+        this.renderer = (new PlumblineAdapter()).createRenderer({mode: 'mount'});
     }
 
     /**
-     * Create ShallowWrapper
+     * Create PlumblineWrapper
      * @param nodes
      * @param testComponent
      * @param testModule
      * @param options
-     * @returns {ShallowWrapper<T>}
+     * @returns {PlumblineWrapper<T>}
      */
-    create(nodes: any, testComponent: T, testModule: any, options: any): ShallowWrapper<T> {
+    create(nodes: any, testComponent: T, testModule: any, options: any): PlumblineWrapper<T> {
         this.renderPromise = this.renderer.render(
             nodes,
             options ? options : {},
@@ -35,7 +35,7 @@ export class ShallowWrapper<T>
 
     private existing(unrendering: Promise<Rendering>,
                      rendering: Rendering,
-                     current: DebugElement): ShallowWrapper<T> {
+                     current: DebugElement): PlumblineWrapper<T> {
         this.renderPromise = unrendering;
         this.rendering = rendering;
         this.currentElement = current;
@@ -44,10 +44,10 @@ export class ShallowWrapper<T>
 
     /**
      * Render the Component
-     * @returns {Promise<ShallowWrapper<T>>}
+     * @returns {Promise<PlumblineWrapper<T>>}
      */
-    async render(): Promise<ShallowWrapper<T>> {
-        return new Promise<ShallowWrapper<T>>((resolve: any, reject: any) => {
+    async render(): Promise<PlumblineWrapper<T>> {
+        return new Promise<PlumblineWrapper<T>>((resolve: any, reject: any) => {
             this.renderPromise.then((rendering) => {
                 this.rendering = rendering;
                 this.currentElement = this.rendering.element;
@@ -59,15 +59,15 @@ export class ShallowWrapper<T>
 
     private checkRender(): void {
         if (this.rendering == null) {
-            throw new Error('Use render() and await on ShallowWrapper ' +
+            throw new Error('Use render() and await on PlumblineWrapper ' +
                 'to complete the rendering process.');
         }
     }
 
 
     /**
-     * Get ElementRef of ShallowWrapper
-     * @return ElementRef of current ShallowWrapper
+     * Get ElementRef of PlumblineWrapper
+     * @return ElementRef of current PlumblineWrapper
      */
     element(): any {
         this.checkRender();
@@ -75,10 +75,10 @@ export class ShallowWrapper<T>
     }
 
     /**
-     * Find child element within ShallowWrapper
+     * Find child element within PlumblineWrapper
      * @return child elements matched
      */
-    find(cssOrDirective: any): Array<ShallowWrapper<T>> {
+    find(cssOrDirective: any): Array<PlumblineWrapper<T>> {
         this.checkRender();
         let query = null;
         if (typeof cssOrDirective === 'string') {
@@ -90,23 +90,23 @@ export class ShallowWrapper<T>
         let matches = this.currentElement.queryAll(query);
         if (matches.length && matches[0] === this.currentElement) {
             throw new Error(`Don't use 'find' to search for your test component, ` +
-                `it is automatically returned by the shallow renderer`);
+                `it is automatically returned by the mount renderer`);
         }
 
-        let wrapperArray: Array<ShallowWrapper<T>> = [];
+        let wrapperArray: Array<PlumblineWrapper<T>> = [];
         matches.forEach((elem) => {
-            wrapperArray.push((new ShallowWrapper<T>()).existing(this.renderPromise,
+            wrapperArray.push((new PlumblineWrapper<T>()).existing(this.renderPromise,
                 this.rendering, elem));
         });
         return wrapperArray;
     }
 
     /**
-     * Find parent element of ShallowWrapper
-     * @return parent of ShallowWrapper
+     * Find parent element of PlumblineWrapper
+     * @return parent of PlumblineWrapper
      */
-    parent(): ShallowWrapper<T> {
-        return (new ShallowWrapper<T>()).existing(this.renderPromise,
+    parent(): PlumblineWrapper<T> {
+        return (new PlumblineWrapper<T>()).existing(this.renderPromise,
             this.rendering, this.currentElement.parent);
     }
 
@@ -153,7 +153,7 @@ export class ShallowWrapper<T>
 
     /**
      * Get the module used in this Component instance test
-     * @returns complete module put together by ShallowWrapper
+     * @returns complete module put together by PlumblineWrapper
      */
     module(): any {
         return this.rendering.tester.completeModule;

@@ -1,4 +1,3 @@
-import Rendering from './models/Rendering';
 /**
  * Adapter future support for different Angular versions
  */
@@ -7,14 +6,12 @@ export default class PlumblineAdapter {
     MODES: any;
     constructor();
     /**
-     *. Create a fully mounted renderer
+     *. Create a mounted renderer
      */
-    createMountRenderer(options: any): any;
+    createMountRenderer(optionsRender: any): any;
     /**
     *. Create a shallow renderer
     */
-    createShallowRenderer(optionsRender: any): {
-        render(element: any, options: any, testComponent: any, testModule: any): Promise<Rendering>;
-    };
+    createShallowRenderer(optionsRender: any): any;
     createRenderer(options: any): any;
 }

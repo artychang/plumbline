@@ -1,8 +1,8 @@
 'use strict';
 
-export {shallow} from './shallow';
-export {ShallowWrapper} from './ShallowWrapper';
+export {mount} from './mount';
+export {PlumblineWrapper} from './PlumblineWrapper';
 
 // Future work with automatic mounting
-// export {mount} from './mount';
-// export {AngularWrapper} from './AngularWrapper';
+// export {deep} from './deep';
+// export {shallow} from './shallow';

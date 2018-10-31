@@ -18,16 +18,9 @@ export default class PlumblineAdapter
     }
 
     /**
-     *. Create a fully mounted renderer
+     *. Create a mounted renderer
      */
-    createMountRenderer(options: any): any  {
-        return null;
-    }
-
-    /**
-	*. Create a shallow renderer
-	*/
-    createShallowRenderer(optionsRender: any) {
+    createMountRenderer(optionsRender: any): any  {
         return {
             render(element: any,
                    options: any,
@@ -37,6 +30,13 @@ export default class PlumblineAdapter
                 return renderer.render(element, options);
             }
         };
+    }
+
+    /**
+	*. Create a shallow renderer
+	*/
+    createShallowRenderer(optionsRender: any) {
+        return null;
     }
 
     createRenderer(options: any) {
