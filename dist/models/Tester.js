@@ -173,7 +173,7 @@ class Tester {
         // Breakdown arrays
         if (Array.isArray(thing)) {
             thing.forEach((single) => {
-                if (!runningList.includes(single)) {
+                if (single && !runningList.includes(single)) {
                     let tempDec = resolveModule(this.listDec(single, dontmock, addedImports, runningList));
                     resobj.imports.push(...tempDec.imports);
                     resobj.declarations.push(...tempDec.declarations);
@@ -282,9 +282,11 @@ class Tester {
             //     this.completeModule.imports.push(...pointerList);
             //     this.baseModule.declarations.add(thing);
             // }
-            let pointerList = this.listDec(thing, dontmock, addedImports);
-            this.completeModule.imports.push(pointerList);
-            this.baseModule.declarations.add(thing);
+            if (thing) {
+                let pointerList = this.listDec(thing, dontmock, addedImports);
+                this.completeModule.imports.push(pointerList);
+                this.baseModule.declarations.add(thing);
+            }
         });
     }
     // ++++++++++++++++++++++++++++++++++++++++
@@ -356,15 +358,12 @@ class Tester {
                 copied.imports = [].concat(imps);
                 // Cache the declarations and wrap them all in NgModules
                 let decls = [];
-                // copied.declarations.forEach((single) => {
-                // Get the cached versions of declarations
-                // let resSingle = this.cacheDec(single, dontmock, imps);
-                // decls.push(...resSingle);
-                // });
-                let resSingle1 = this.listDec(copied.declarations, dontmock, imps);
-                decls.push(resSingle1);
-                // Move dependencies into the queue for top layer processing
-                this.baseDec(copied.declarations, dontmock, imps);
+                if (copied.declarations) {
+                    let resSingle1 = this.listDec(copied.declarations, dontmock, imps);
+                    decls.push(resSingle1);
+                    // Move dependencies into the queue for top layer processing
+                    this.baseDec(copied.declarations, dontmock, imps);
+                }
                 // Move the declarations to imports encased in NgModules
                 copied.imports.push(...decls);
                 copied.declarations = [];
@@ -374,19 +373,10 @@ class Tester {
                     if (utils_1.isNgModule(single)) {
                         let resSingle = this.cacheImp(single, dontmock, true);
                         expts.push(...resSingle);
-                        // if (!this.cacheModule.imports.has(single)) {
-                        //     expts.push(single);
-                        // }
                     }
-                    else {
-                        // let resSingle = this.cacheDec(single, dontmock, imps);
+                    else if (single) {
                         let resSingle = this.listDec(single, dontmock, imps);
                         expts.push(resSingle);
-                        // if (!this.cacheModule.declarations.has(single)) {
-                        //     let resSingle = this.cacheDec(single, dontmock, imps);
-                        // this.appendDec(resSingle, imps);
-                        //     expts.push(...resSingle);
-                        // }
                     }
                 });
                 copied.exports = expts;
