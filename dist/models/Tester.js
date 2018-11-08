@@ -193,7 +193,7 @@ class Tester {
                 }
                 catch (e) {
                     throw new Error('Plumbline had trouble mocking ' +
-                        (thing.name || thing) + '.\n' + e);
+                        ((thing && thing.name) ? thing.name : thing) + '.\n' + e);
                 }
             }
             resobj.declarations.push(pointer);
@@ -234,7 +234,7 @@ class Tester {
                 }
                 catch (e) {
                     throw new Error('Plumbline had trouble mocking ' +
-                        (thing.name || thing) + '.\n' + e);
+                        ((thing && thing.name) ? thing.name : thing) + '.\n' + e);
                 }
             }
             pointer = createPropImport(thing, {
@@ -326,8 +326,6 @@ class Tester {
     //   Imports
     // ++++++++++++++++++++++++++++++++++++++++
     cacheImp(thing, dontmock = false, exportmock = false) {
-        // console.log('cacheImp ' + thing.name);
-        // console.log(thing);
         // Stop if import is in cache
         if (!this.cacheModule.imports.has(thing)) {
             // Breakdown arrays
@@ -412,7 +410,6 @@ class Tester {
     // Mocking import modules
     baseImp(thingList, dontmock) {
         thingList.forEach((thing) => {
-            // console.log('baseImp ' + thing.name);
             // Breakdown arrays
             if (Array.isArray(thing)) {
                 this.baseImp(thing, dontmock);

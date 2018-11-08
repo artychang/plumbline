@@ -211,7 +211,7 @@ export class Tester<T>
                     pointer = createMockDeclaration(thing);
                 } catch (e) {
                     throw new Error('Plumbline had trouble mocking ' +
-                        (thing.name || thing) + '.\n' + e);
+                        ((thing && thing.name) ? thing.name : thing) + '.\n' + e);
                 }
             }
 
@@ -258,7 +258,7 @@ export class Tester<T>
                     pointer = createMockDeclaration(thing);
                 } catch (e) {
                     throw new Error('Plumbline had trouble mocking ' +
-                        (thing.name || thing) + '.\n' + e);
+                        ((thing && thing.name) ? thing.name : thing) + '.\n' + e);
                 }
             }
 
@@ -360,9 +360,6 @@ export class Tester<T>
     // ++++++++++++++++++++++++++++++++++++++++
 
     cacheImp(thing: any, dontmock: boolean = false, exportmock: boolean = false): any[] {
-
-        // console.log('cacheImp ' + thing.name);
-        // console.log(thing);
         // Stop if import is in cache
         if (!this.cacheModule.imports.has(thing)) {
 
@@ -462,7 +459,6 @@ export class Tester<T>
     baseImp(thingList: any[], dontmock?: boolean): void {
 
         thingList.forEach((thing) => {
-            // console.log('baseImp ' + thing.name);
             // Breakdown arrays
             if (Array.isArray(thing)) {
                 this.baseImp(thing, dontmock);
