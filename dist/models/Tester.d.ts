@@ -14,6 +14,7 @@ export declare function copyModule(ngModule: any): {
     providers: any[];
     declarations: any[];
     exports: any[];
+    entryComponents: any[];
     schemas: any[];
 };
 export declare class Tester<T> {
@@ -27,6 +28,7 @@ export declare class Tester<T> {
         declarations: any;
         providers: any;
         exports: any;
+        entryComponents: any;
         schemas: any;
     };
     cacheModule: {
@@ -34,6 +36,7 @@ export declare class Tester<T> {
         declarations: Map<any, any>;
         providers: Map<any, any>;
         exports: Map<any, any>;
+        entryComponents: Map<any, any>;
         schemas: Map<any, any>;
     };
     baseModule: {
@@ -41,6 +44,7 @@ export declare class Tester<T> {
         declarations: Set<any>;
         providers: Set<any>;
         exports: Set<any>;
+        entryComponents: Set<any>;
         schemas: Set<any>;
     };
     constructor(testComponent: T, options?: any);
@@ -49,12 +53,12 @@ export declare class Tester<T> {
         declarations: any;
         providers: any;
         exports: any;
+        entryComponents: any;
         schemas: any;
     };
     processModule(mod: any, dontmock?: boolean): void;
     listDec(thing: any, dontmock: boolean, addedImports?: any[], runningList?: any[]): any;
     cacheDec(thing: any, dontmock: boolean, addedImports?: any[]): any[];
-    appendDec(thingList: any[], addedImports?: any[]): void;
     baseDec(thingList: any[], dontmock: boolean, addedImports?: any[]): void;
     mockProv(thing: any, mod: any, dontmock?: boolean): void;
     cacheImp(thing: any, dontmock?: boolean, exportmock?: boolean): any[];

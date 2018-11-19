@@ -1,9 +1,19 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, Input, NgModule, OnChanges, OnInit} from '@angular/core';
+import {
+    Component, 
+    CUSTOM_ELEMENTS_SCHEMA, 
+    Input, 
+    NgModule, 
+    OnChanges, 
+    OnInit, 
+    ViewEncapsulation,
+    ComponentFactoryResolver,
+    Injector
+} from '@angular/core';
 import {mount} from './mount';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NgModel} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
-import {CommonModule} from '@angular/common';
+import {CommonModule, CurrencyPipe} from '@angular/common';
 import {EditorModule, SharedModule, ToolbarModule} from 'primeng/primeng';
 import {resolveModule, Tester} from './models/Tester';
 import {DirectiveComponent, DirectiveModule1, EmbeddedItemDirective} from './test/DirectiveTests';
@@ -89,7 +99,6 @@ describe('Mount', () => {
     })
     class ShallowModule3 {}
 
-
     @Component({
         selector: 'tif-component-1',
         template: `
@@ -123,6 +132,43 @@ describe('Mount', () => {
         exports: [TifComponent1]
     })
     class TifModule {}
+
+    @Component({
+        selector: 'provider-component-1',
+        template: '<h1>Provider Component 1</h1>'
+    })
+    class ProviderComponent1 {
+        constructor(currencyPipe: CurrencyPipe) {}
+    }
+
+    @Component({
+        selector: 'entry-component-1',
+        template: '<p>Entry Component 1</p>',
+        encapsulation: ViewEncapsulation.None
+    })
+    class EntryComponent1 {}
+
+    @Component({
+        selector: 'entry-use-component-1',
+        template: '<p>Entry Use Component 1</p>'
+    })
+    class EntryUseComponent1 {
+        private entryComp: EntryComponent1;
+
+        constructor (public factoryResolver: ComponentFactoryResolver,
+            public injector: Injector) {}
+        ngOnInit () {
+            this.entryComp = this.factoryResolver.resolveComponentFactory(EntryComponent1)
+            .create(this.injector).instance;
+        }
+    }
+
+    @NgModule({
+        declarations: [EntryComponent1],
+        entryComponents: [EntryComponent1],
+    })
+    class EntryModule1 {}
+
 
     describe('Simple Component', () => {
 
@@ -237,6 +283,35 @@ describe('Mount', () => {
         });
     });
 
+    describe('Complex Component - Load Providers', () => {
+
+        it('Simple Mock Render - Not Real Mounting', async () => {
+            let complexComp = await mount<ProviderComponent1>(
+                `<provider-component-1></provider-component-1>`,
+                ProviderComponent1, {
+                    mountModule: {
+                        providers: [CurrencyPipe]
+                    }
+                });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<h1>Provider Component 1</h1>');
+        });
+    });
+
+    describe('Complex Component - Load Entry Components', () => {
+
+        it('Simple Mock Render - Not Real Mounting', async () => {
+            let complexComp = await mount<EntryUseComponent1>(
+                `<entry-use-component-1></entry-use-component-1>`,
+                EntryUseComponent1, {
+                    mountModule: {
+                        imports: [EntryModule1]
+                    }
+                });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<p>Entry Use Component 1</p>');
+        });
+    });
 
     describe('Complex Component - Load Imports', () => {
 

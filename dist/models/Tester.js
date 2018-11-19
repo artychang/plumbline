@@ -37,7 +37,9 @@ function resolveModule(ngModule) {
     if (ngMod.exports === void 0) {
         ngMod.exports = [];
     }
-    // if(ngMod.entryComponents === void 0){ngMod.entryComponents = [];}
+    if (ngMod.entryComponents === void 0) {
+        ngMod.entryComponents = [];
+    }
     if (ngMod.schemas === void 0) {
         ngMod.schemas = [];
     }
@@ -54,14 +56,14 @@ function copyModule(ngModule) {
     let providers = ngModule.providers === void 0 ? [] : ngModule.providers;
     let declarations = ngModule.declarations === void 0 ? [] : ngModule.declarations;
     let exports = ngModule.exports === void 0 ? [] : ngModule.exports;
-    // let entryComponents = ngModule.entryComponents === void 0 ? [] : ngModule.entryComponents;
+    let entryComponents = ngModule.entryComponents === void 0 ? [] : ngModule.entryComponents;
     let schemas = ngModule.schemas === void 0 ? [] : ngModule.schemas;
     return {
         imports: [].concat(imports),
         providers: [].concat(providers),
         declarations: [].concat(declarations),
         exports: [].concat(exports),
-        // entryComponents: [].concat(entryComponents),
+        entryComponents: [].concat(entryComponents),
         schemas: [].concat(schemas)
     };
 }
@@ -73,6 +75,7 @@ class Tester {
             declarations: [],
             providers: [],
             exports: [],
+            entryComponents: [],
             schemas: []
         };
         this.cacheModule = {
@@ -80,6 +83,7 @@ class Tester {
             declarations: new Map(),
             providers: new Map(),
             exports: new Map(),
+            entryComponents: new Map(),
             schemas: new Map()
         };
         this.baseModule = {
@@ -87,6 +91,7 @@ class Tester {
             declarations: new Set(),
             providers: new Set(),
             exports: new Set(),
+            entryComponents: new Set(),
             schemas: new Set()
         };
         this.testComponent = testComponent;
@@ -108,6 +113,7 @@ class Tester {
             declarations: [],
             providers: [],
             exports: [],
+            entryComponents: [],
             schemas: []
         };
         // Process the mock module next
@@ -116,6 +122,7 @@ class Tester {
             declarations: [],
             providers: [],
             exports: [],
+            entryComponents: [],
             schemas: []
         };
         // Combine the schemas
@@ -156,6 +163,7 @@ class Tester {
             declarations: [],
             imports: [],
             exports: [],
+            entryComponents: [],
             schemas: this.completeModule.schemas
         });
         let resobj = resolveModule(resmod);
@@ -249,11 +257,6 @@ class Tester {
         else { // return a module wrapper for declarations already in cache
             return [this.cacheModule.declarations.get(thing)];
         }
-    }
-    appendDec(thingList, addedImports = []) {
-        thingList.forEach((thing) => {
-            resolveModule(thing).imports = addedImports;
-        });
     }
     // Mocking declaration components
     baseDec(thingList, dontmock, addedImports = []) {
@@ -423,7 +426,7 @@ function createMockImport(inImport) {
             imports: [],
             declarations: [],
             exports: [],
-            // entryComponents: [],
+            entryComponents: [],
             providers: [],
             schemas: []
         }),
@@ -437,7 +440,7 @@ function createPropImport(inImport, propImport) {
         imports: [],
         declarations: [],
         exports: [],
-        // entryComponents: [],
+        entryComponents: [],
         providers: [],
         schemas: []
     };
@@ -445,7 +448,7 @@ function createPropImport(inImport, propImport) {
         modA.imports = propImport.imports ? propImport.imports : [];
         modA.declarations = propImport.declarations ? propImport.declarations : [];
         modA.exports = propImport.exports ? propImport.exports : [];
-        // modA.entryComponents = propImport.entryComponents ? propImport.entryComponents : [];
+        modA.entryComponents = propImport.entryComponents ? propImport.entryComponents : [];
         modA.providers = propImport.providers ? propImport.providers : [];
         modA.schemas = propImport.schemas ? propImport.schemas : [];
     }

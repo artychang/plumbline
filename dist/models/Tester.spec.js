@@ -101,6 +101,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
@@ -114,6 +115,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0]).toEqual(TestComponent1);
@@ -127,6 +129,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0]).not.toEqual(TestComponent1);
@@ -144,6 +147,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -163,6 +167,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -184,6 +189,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -208,6 +214,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -230,6 +237,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -251,6 +259,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -272,6 +281,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -293,6 +303,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -316,6 +327,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -346,6 +358,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -373,6 +386,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -402,6 +416,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(setup.getCompleteModule().declarations[0])
@@ -426,6 +441,7 @@ describe('Tester', () => {
                 providers: [],
                 declarations: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             // Check whether the copy module made clones of the components
@@ -435,6 +451,7 @@ describe('Tester', () => {
                 providers: [],
                 declarations: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
         });
@@ -456,6 +473,7 @@ describe('Tester', () => {
                 declarations: [TestComponent1, TestComponent2],
                 exports: [],
                 providers: [],
+                entryComponents: [],
                 schemas: []
             }));
             // Change the reference values - remove one component
@@ -466,6 +484,7 @@ describe('Tester', () => {
                 declarations: [TestComponent1],
                 exports: [],
                 providers: [],
+                entryComponents: [],
                 schemas: []
             }));
             expect(tmodule2.declarations[0]).toEqual(TestComponent1);
@@ -489,6 +508,7 @@ describe('Tester', () => {
                 providers: [],
                 declarations: [TestComponent1, TestComponent2],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             // Change the reference values for tmodule1 - remove one component
@@ -499,6 +519,7 @@ describe('Tester', () => {
                 providers: [],
                 declarations: [TestComponent1, TestComponent2],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             // Check tmodule1
@@ -528,6 +549,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             // RouterTestingModule mock import created
@@ -558,6 +580,7 @@ describe('Tester', () => {
                 declarations: [null],
                 providers: [],
                 exports: [],
+                entryComponents: [],
                 schemas: []
             }));
             // RouterTestingModule mock import created

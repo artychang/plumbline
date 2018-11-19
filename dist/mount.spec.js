@@ -153,6 +153,51 @@ describe('Mount', () => {
             exports: [TifComponent1]
         })
     ], TifModule);
+    let ProviderComponent1 = class ProviderComponent1 {
+        constructor(currencyPipe) { }
+    };
+    ProviderComponent1 = __decorate([
+        core_1.Component({
+            selector: 'provider-component-1',
+            template: '<h1>Provider Component 1</h1>'
+        }),
+        __metadata("design:paramtypes", [common_1.CurrencyPipe])
+    ], ProviderComponent1);
+    let EntryComponent1 = class EntryComponent1 {
+    };
+    EntryComponent1 = __decorate([
+        core_1.Component({
+            selector: 'entry-component-1',
+            template: '<p>Entry Component 1</p>',
+            encapsulation: core_1.ViewEncapsulation.None
+        })
+    ], EntryComponent1);
+    let EntryUseComponent1 = class EntryUseComponent1 {
+        constructor(factoryResolver, injector) {
+            this.factoryResolver = factoryResolver;
+            this.injector = injector;
+        }
+        ngOnInit() {
+            this.entryComp = this.factoryResolver.resolveComponentFactory(EntryComponent1)
+                .create(this.injector).instance;
+        }
+    };
+    EntryUseComponent1 = __decorate([
+        core_1.Component({
+            selector: 'entry-use-component-1',
+            template: '<p>Entry Use Component 1</p>'
+        }),
+        __metadata("design:paramtypes", [core_1.ComponentFactoryResolver,
+            core_1.Injector])
+    ], EntryUseComponent1);
+    let EntryModule1 = class EntryModule1 {
+    };
+    EntryModule1 = __decorate([
+        core_1.NgModule({
+            declarations: [EntryComponent1],
+            entryComponents: [EntryComponent1],
+        })
+    ], EntryModule1);
     describe('Simple Component', () => {
         it('Simple Render', async () => {
             let simpleComp = await mount_1.mount(`<simple-component></simple-component>`, SimpleComponent, {}, {});
@@ -233,6 +278,28 @@ describe('Mount', () => {
             expect(complexComp.find('h1').length).toEqual(1);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('Title 1');
             expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+        });
+    });
+    describe('Complex Component - Load Providers', () => {
+        it('Simple Mock Render - Not Real Mounting', async () => {
+            let complexComp = await mount_1.mount(`<provider-component-1></provider-component-1>`, ProviderComponent1, {
+                mountModule: {
+                    providers: [common_1.CurrencyPipe]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<h1>Provider Component 1</h1>');
+        });
+    });
+    describe('Complex Component - Load Entry Components', () => {
+        it('Simple Mock Render - Not Real Mounting', async () => {
+            let complexComp = await mount_1.mount(`<entry-use-component-1></entry-use-component-1>`, EntryUseComponent1, {
+                mountModule: {
+                    imports: [EntryModule1]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<p>Entry Use Component 1</p>');
         });
     });
     describe('Complex Component - Load Imports', () => {

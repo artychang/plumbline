@@ -21,7 +21,7 @@ export function resolveModule(ngModule: any) {
     if (ngMod.providers === void 0) { ngMod.providers = []; }
     if (ngMod.declarations === void 0) { ngMod.declarations = []; }
     if (ngMod.exports === void 0) { ngMod.exports = []; }
-    // if(ngMod.entryComponents === void 0){ngMod.entryComponents = [];}
+    if (ngMod.entryComponents === void 0){ ngMod.entryComponents = []; }
     if (ngMod.schemas === void 0) { ngMod.schemas = []; }
     return ngMod;
 }
@@ -36,14 +36,14 @@ export function copyModule(ngModule: any) {
     let providers = ngModule.providers === void 0 ? [] : ngModule.providers;
     let declarations = ngModule.declarations === void 0 ? [] : ngModule.declarations;
     let exports = ngModule.exports === void 0 ? [] : ngModule.exports;
-    // let entryComponents = ngModule.entryComponents === void 0 ? [] : ngModule.entryComponents;
+    let entryComponents = ngModule.entryComponents === void 0 ? [] : ngModule.entryComponents;
     let schemas = ngModule.schemas === void 0 ? [] : ngModule.schemas;
     return {
         imports: [].concat(imports),
         providers: [].concat(providers),
         declarations: [].concat(declarations),
         exports: [].concat(exports),
-        // entryComponents: [].concat(entryComponents),
+        entryComponents: [].concat(entryComponents),
         schemas: [].concat(schemas)
     };
 }
@@ -62,6 +62,7 @@ export class Tester<T>
         declarations: <any> [],
         providers: <any> [],
         exports: <any> [],
+        entryComponents: <any> [],
         schemas: <any> []
     };
 
@@ -70,6 +71,7 @@ export class Tester<T>
         declarations: new Map(),
         providers: new Map(),
         exports: new Map(),
+        entryComponents: new Map(),
         schemas: new Map()
     };
 
@@ -78,6 +80,7 @@ export class Tester<T>
         declarations: new Set(),
         providers: new Set(),
         exports: new Set(),
+        entryComponents: new Set(),
         schemas: new Set()
     };
 
@@ -106,6 +109,7 @@ export class Tester<T>
             declarations: [],
             providers: [],
             exports: [],
+            entryComponents: [],
             schemas: []
         };
 
@@ -115,6 +119,7 @@ export class Tester<T>
             declarations: [],
             providers: [],
             exports: [],
+            entryComponents: [],
             schemas: []
         };
 
@@ -169,6 +174,7 @@ export class Tester<T>
             declarations: [],
             imports: [],
             exports: [],
+            entryComponents: [],
             schemas: this.completeModule.schemas
         });
 
@@ -275,12 +281,6 @@ export class Tester<T>
         } else { // return a module wrapper for declarations already in cache
             return [this.cacheModule.declarations.get(thing)];
         }
-    }
-
-    appendDec(thingList: any[], addedImports: any[] = []): void {
-        thingList.forEach((thing) => {
-            resolveModule(thing).imports = addedImports;
-        });
     }
 
     // Mocking declaration components
@@ -470,7 +470,7 @@ export function createMockImport(inImport: any): any {
         imports: [],
         declarations: [],
         exports: [],
-        // entryComponents: [],
+        entryComponents: [],
         providers: [],
         schemas: []
     })
@@ -484,7 +484,7 @@ export function createPropImport(inImport: any, propImport?: any): any {
         imports: [],
         declarations: [],
         exports: [],
-        // entryComponents: [],
+        entryComponents: [],
         providers: [],
         schemas: []
     };
@@ -492,7 +492,7 @@ export function createPropImport(inImport: any, propImport?: any): any {
         modA.imports = propImport.imports ? propImport.imports : [];
         modA.declarations = propImport.declarations ? propImport.declarations : [];
         modA.exports = propImport.exports ? propImport.exports : [];
-        // modA.entryComponents = propImport.entryComponents ? propImport.entryComponents : [];
+        modA.entryComponents = propImport.entryComponents ? propImport.entryComponents : [];
         modA.providers = propImport.providers ? propImport.providers : [];
         modA.schemas = propImport.schemas ? propImport.schemas : [];
     }
