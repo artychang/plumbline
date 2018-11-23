@@ -1,10 +1,10 @@
 import {
-    Component, 
-    CUSTOM_ELEMENTS_SCHEMA, 
-    Input, 
-    NgModule, 
-    OnChanges, 
-    OnInit, 
+    Component,
+    CUSTOM_ELEMENTS_SCHEMA,
+    Input,
+    NgModule,
+    OnChanges,
+    OnInit,
     ViewEncapsulation,
     ComponentFactoryResolver,
     Injector
@@ -169,6 +169,18 @@ describe('Mount', () => {
     })
     class EntryModule1 {}
 
+    @NgModule({
+        declarations: [SimpleComponent, TitleComponent],
+        exports: [SimpleComponent, TitleComponent],
+        entryComponents: [SimpleComponent, TitleComponent]
+    })
+    class EntryModule2 {}
+
+    @NgModule({
+        imports: [EntryModule2],
+        exports: [EntryModule2]
+    })
+    class EntryModule3 {}
 
     describe('Simple Component', () => {
 
@@ -285,7 +297,7 @@ describe('Mount', () => {
 
     describe('Complex Component - Load Providers', () => {
 
-        it('Simple Mock Render - Not Real Mounting', async () => {
+        it('Simple Mock Render - Real Mounting', async () => {
             let complexComp = await mount<ProviderComponent1>(
                 `<provider-component-1></provider-component-1>`,
                 ProviderComponent1, {
@@ -300,7 +312,7 @@ describe('Mount', () => {
 
     describe('Complex Component - Load Entry Components', () => {
 
-        it('Simple Mock Render - Not Real Mounting', async () => {
+        it('Simple Mock Render - Real Mounting', async () => {
             let complexComp = await mount<EntryUseComponent1>(
                 `<entry-use-component-1></entry-use-component-1>`,
                 EntryUseComponent1, {
@@ -310,6 +322,47 @@ describe('Mount', () => {
                 });
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<p>Entry Use Component 1</p>');
+        });
+
+        it('Import Module Mock', async () => {
+            let complexComp = await mount<ComplexComponent>(
+                `<complex-component></complex-component>`,
+                ComplexComponent, {
+                    mockModule: {
+                        imports: [EntryModule3],
+                        schemas: [CUSTOM_ELEMENTS_SCHEMA]
+                    }
+                });
+
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).not.toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).not.toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).not.toContain('<p>Text 2</p>');
+            expect(complexComp.find('h1').length).toEqual(0);
+        });
+
+        it('Import Module Mount', async () => {
+            let complexComp = await mount<ComplexComponent>(
+                `<complex-component></complex-component>`,
+                ComplexComponent, {
+                    mountModule: {
+                        imports: [EntryModule3],
+                        schemas: [CUSTOM_ELEMENTS_SCHEMA]
+                    }
+                });
+
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.find('h1').length).toEqual(2);
+            expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
+            expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+
+            expect(complexComp.module().schemas[0]).toEqual(CUSTOM_ELEMENTS_SCHEMA);
+            expect(resolveModule(complexComp.module().imports[0]).schemas[0])
+                .toEqual(CUSTOM_ELEMENTS_SCHEMA);
         });
     });
 

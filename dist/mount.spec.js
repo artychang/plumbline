@@ -198,6 +198,23 @@ describe('Mount', () => {
             entryComponents: [EntryComponent1],
         })
     ], EntryModule1);
+    let EntryModule2 = class EntryModule2 {
+    };
+    EntryModule2 = __decorate([
+        core_1.NgModule({
+            declarations: [SimpleComponent, TitleComponent],
+            exports: [SimpleComponent, TitleComponent],
+            entryComponents: [SimpleComponent, TitleComponent]
+        })
+    ], EntryModule2);
+    let EntryModule3 = class EntryModule3 {
+    };
+    EntryModule3 = __decorate([
+        core_1.NgModule({
+            imports: [EntryModule2],
+            exports: [EntryModule2]
+        })
+    ], EntryModule3);
     describe('Simple Component', () => {
         it('Simple Render', async () => {
             let simpleComp = await mount_1.mount(`<simple-component></simple-component>`, SimpleComponent, {}, {});
@@ -281,7 +298,7 @@ describe('Mount', () => {
         });
     });
     describe('Complex Component - Load Providers', () => {
-        it('Simple Mock Render - Not Real Mounting', async () => {
+        it('Simple Mock Render - Real Mounting', async () => {
             let complexComp = await mount_1.mount(`<provider-component-1></provider-component-1>`, ProviderComponent1, {
                 mountModule: {
                     providers: [common_1.CurrencyPipe]
@@ -292,7 +309,7 @@ describe('Mount', () => {
         });
     });
     describe('Complex Component - Load Entry Components', () => {
-        it('Simple Mock Render - Not Real Mounting', async () => {
+        it('Simple Mock Render - Real Mounting', async () => {
             let complexComp = await mount_1.mount(`<entry-use-component-1></entry-use-component-1>`, EntryUseComponent1, {
                 mountModule: {
                     imports: [EntryModule1]
@@ -300,6 +317,38 @@ describe('Mount', () => {
             });
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<p>Entry Use Component 1</p>');
+        });
+        it('Import Module Mock', async () => {
+            let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
+                mockModule: {
+                    imports: [EntryModule3],
+                    schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).not.toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).not.toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).not.toContain('<p>Text 2</p>');
+            expect(complexComp.find('h1').length).toEqual(0);
+        });
+        it('Import Module Mount', async () => {
+            let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
+                mountModule: {
+                    imports: [EntryModule3],
+                    schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.find('h1').length).toEqual(2);
+            expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
+            expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.module().schemas[0]).toEqual(core_1.CUSTOM_ELEMENTS_SCHEMA);
+            expect(Tester_1.resolveModule(complexComp.module().imports[0]).schemas[0])
+                .toEqual(core_1.CUSTOM_ELEMENTS_SCHEMA);
         });
     });
     describe('Complex Component - Load Imports', () => {

@@ -384,6 +384,10 @@ class Tester {
                 });
                 copied.exports = expts;
                 copied.schemas = this.completeModule.schemas;
+                // Leave out entryComponents when mocking
+                if (!dontmock) {
+                    copied.entryComponents = [];
+                }
                 pointer = createPropImport(thing, copied);
                 // pointer = createMockImport(thing);
             }

@@ -21,7 +21,7 @@ export function resolveModule(ngModule: any) {
     if (ngMod.providers === void 0) { ngMod.providers = []; }
     if (ngMod.declarations === void 0) { ngMod.declarations = []; }
     if (ngMod.exports === void 0) { ngMod.exports = []; }
-    if (ngMod.entryComponents === void 0){ ngMod.entryComponents = []; }
+    if (ngMod.entryComponents === void 0) { ngMod.entryComponents = []; }
     if (ngMod.schemas === void 0) { ngMod.schemas = []; }
     return ngMod;
 }
@@ -426,6 +426,11 @@ export class Tester<T>
                 });
                 copied.exports = expts;
                 copied.schemas = this.completeModule.schemas;
+
+                // Leave out entryComponents when mocking
+                if (!dontmock) {
+                    copied.entryComponents = [];
+                }
 
                 pointer = createPropImport(thing, copied);
                 // pointer = createMockImport(thing);
