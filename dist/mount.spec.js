@@ -429,6 +429,46 @@ describe('Mount', () => {
                 .toEqual(core_1.CUSTOM_ELEMENTS_SCHEMA);
         });
     });
+    describe('Component Self Mock', () => {
+        it('Simple Declaration - Mock', async () => {
+            let simpleComp = await mount_1.mount(`<simple-component></simple-component>`, SimpleComponent, {
+                mockModule: {
+                    declarations: [SimpleComponent]
+                }
+            });
+            expect(simpleComp.element()).not.toEqual(null);
+            expect(simpleComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(simpleComp.find('h1').length).toEqual(1);
+        });
+        it('Simple Declaration - Mock & Mount', async () => {
+            let simpleComp = await mount_1.mount(`<simple-component></simple-component>`, SimpleComponent, {
+                mockModule: {
+                    declarations: [SimpleComponent]
+                },
+                mountModule: {
+                    declarations: [SimpleComponent]
+                }
+            });
+            expect(simpleComp.element()).not.toEqual(null);
+            expect(simpleComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(simpleComp.find('h1').length).toEqual(1);
+        });
+        it('Complex Import Module - Mock & Mount', async () => {
+            let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
+                mockModule: {
+                    declarations: [ComplexComponent]
+                },
+                mountModule: {
+                    imports: [ShallowModule1]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.find('h1').length).toEqual(2);
+        });
+    });
     describe('Complex Component - Access Component Internals', () => {
         it('Test #1', async () => {
             let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
@@ -441,12 +481,12 @@ describe('Mount', () => {
             expect(complexComp.instance().counter).toEqual(1);
             expect(complexComp.instance().getCounter()).toEqual(1);
             complexComp.instance().counter = 2;
-            complexComp.update();
+            await complexComp.update();
             expect(complexComp.find('span')[0].element().innerHTML).toEqual('2');
             expect(complexComp.instance().counter).toEqual(2);
             expect(complexComp.instance().getCounter()).toEqual(2);
             complexComp.instance().setCounter(3);
-            complexComp.update();
+            await complexComp.update();
             expect(complexComp.find('span')[0].element().innerHTML).toEqual('3');
             expect(complexComp.instance().counter).toEqual(3);
             expect(complexComp.instance().getCounter()).toEqual(3);
@@ -519,10 +559,10 @@ describe('Mount', () => {
             expect(tifComp.element().innerHTML).toContain('<h4>Test If 1</h4>');
             expect(tifComp.element().innerHTML).not.toContain('enabled');
             tifComp.instance().enable();
-            tifComp.update();
+            await tifComp.update();
             expect(tifComp.element().innerHTML).toContain('enabled');
             tifComp.instance().disable();
-            tifComp.update();
+            await tifComp.update();
             expect(tifComp.element().innerHTML).not.toContain('enabled');
         });
         it('Test #2', async () => {

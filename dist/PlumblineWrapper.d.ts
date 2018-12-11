@@ -53,7 +53,7 @@ export declare class PlumblineWrapper<T> {
     /**
      * Wait for the instance and DOM to update
      */
-    update(): void;
+    update(): Promise<PlumblineWrapper<T>>;
     tester(): any;
     /**
      * Get the module used in this Component instance test

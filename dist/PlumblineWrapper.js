@@ -115,11 +115,15 @@ class PlumblineWrapper {
     /**
      * Wait for the instance and DOM to update
      */
-    update() {
-        this.checkRender();
-        this.rendering.instance.ngOnChanges();
-        this.rendering.fixture.detectChanges();
-        // return this.rendering.fixture.whenStable();
+    async update() {
+        return new Promise((resolve, reject) => {
+            this.checkRender();
+            this.rendering.instance.ngOnChanges();
+            this.rendering.fixture.detectChanges();
+            return this.rendering.fixture.whenStable().then(() => {
+                resolve(this);
+            });
+        });
     }
     tester() {
         return this.rendering.tester;
