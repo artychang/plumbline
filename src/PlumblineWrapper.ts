@@ -140,11 +140,15 @@ export class PlumblineWrapper<T>
     /**
      * Wait for the instance and DOM to update
      */
-    update(): void {
-        this.checkRender();
-        this.rendering.instance.ngOnChanges();
-        this.rendering.fixture.detectChanges();
-        // return this.rendering.fixture.whenStable();
+    async update(): Promise<PlumblineWrapper<T>> {
+        return new Promise<PlumblineWrapper<T>>((resolve: any, reject: any) => {
+            this.checkRender();
+            this.rendering.instance.ngOnChanges();
+            this.rendering.fixture.detectChanges();
+            return this.rendering.fixture.whenStable().then(() => {
+                resolve(this);
+            });
+        });
     }
 
     tester(): any {
