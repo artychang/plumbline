@@ -92,9 +92,23 @@ class PlumblineWrapper {
      * Get the instance of this Component in TestBed
      * @returns instance of Component in TestBed
      */
-    instance() {
+    instance(component) {
         this.checkRender();
-        return this.rendering.instance;
+        if (!component) {
+            // Give the root instance for no arguments
+            return this.rendering.instance;
+        }
+        else {
+            try {
+                // Give the current element instance for specific component
+                return this.currentElement.injector.get(component);
+            }
+            catch (e) {
+                throw new Error('Plumbline could not inject ' +
+                    component.name + ' directive onto DOM element ' +
+                    this.currentElement.name);
+            }
+        }
     }
     /**
      * Get the bindings that were used in this Component instance

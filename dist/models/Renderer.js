@@ -11,7 +11,7 @@ class Renderer {
         this.tester = tester;
         this.completeModule = this.tester.getCompleteModule();
     }
-    // Render the entire TestBed instance of the component + markup
+    // Render the entire TestBed of the component + markup
     render(html, optionsIn) {
         // Options for binding and future customization
         let options = Object.assign({ detectChanges: true, bind: {} }, optionsIn);

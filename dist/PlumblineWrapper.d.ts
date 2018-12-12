@@ -39,7 +39,7 @@ export declare class PlumblineWrapper<T> {
      * Get the instance of this Component in TestBed
      * @returns instance of Component in TestBed
      */
-    instance(): T;
+    instance(component?: any): any;
     /**
      * Get the bindings that were used in this Component instance
      * @returns bindings used to create this Component
