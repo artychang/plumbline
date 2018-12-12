@@ -16,7 +16,7 @@ export default class Renderer {
         this.completeModule = this.tester.getCompleteModule();
     }
 
-    // Render the entire TestBed instance of the component + markup
+    // Render the entire TestBed of the component + markup
     render(html: any, optionsIn: any): Promise<Rendering> {
 
         // Options for binding and future customization

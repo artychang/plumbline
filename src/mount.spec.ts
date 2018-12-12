@@ -59,13 +59,20 @@ describe('Mount', () => {
             this.subtitleIn = this.subtitleIn ? this.subtitleIn : '';
             this.subtitleOut = this.subtitleIn;
         }
+
+        ngOnChanges() {
+            this.titleIn = this.titleIn ? this.titleIn : '';
+            this.titleOut = this.titleIn;
+            this.subtitleIn = this.subtitleIn ? this.subtitleIn : '';
+            this.subtitleOut = this.subtitleIn;
+        }
     }
 
     @Component({
         selector: `complex-component`,
         template: `
             <simple-component></simple-component>
-            <title-component [titleIn]="'Title 1'" [subtitleIn]="'Text 2'"></title-component>
+            <title-component [titleIn]="'Title 1'" [subtitleIn]="'Counter: ' + counter"></title-component>
             <span>{{counter}}</span>
         `
     })
@@ -267,11 +274,11 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
             expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
         });
 
         it('Simple Mount Render - Mixed Mounting', async () => {
@@ -288,10 +295,10 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).not.toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(1);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
         });
     });
 
@@ -354,11 +361,11 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
             expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
 
             expect(complexComp.module().schemas[0]).toEqual(CUSTOM_ELEMENTS_SCHEMA);
             expect(resolveModule(complexComp.module().imports[0]).schemas[0])
@@ -394,11 +401,11 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
             expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
         });
 
         it('Import Module - Full #1', async () => {
@@ -412,11 +419,11 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
             expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
         });
 
         it('Import Module - Full #2', async () => {
@@ -431,11 +438,11 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
             expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
         });
 
         it('Import Module Schema - Full #3', async () => {
@@ -451,11 +458,11 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
             expect(complexComp.find('h1')[0].element().innerHTML).toEqual('This is Simple');
             expect(complexComp.find('h1')[1].element().innerHTML).toEqual('Title 1');
-            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Text 2');
+            expect(complexComp.find('p')[0].element().innerHTML).toEqual('Counter: 1');
 
             expect(complexComp.module().schemas[0]).toEqual(CUSTOM_ELEMENTS_SCHEMA);
             expect(resolveModule(complexComp.module().imports[0]).schemas[0])
@@ -507,8 +514,48 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
-            expect(complexComp.element().innerHTML).toContain('<p>Text 2</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
+        });
+    });
+
+    describe('Instance Injector', () => {
+        it('Simple Mount Render - Real Mounting', async () => {
+            let complexComp = await mount(
+                `<complex-component></complex-component>`,
+                ComplexComponent, {
+                    mountModule: {
+                        declarations: [SimpleComponent, TitleComponent]
+                    }
+                });
+            expect(complexComp.instance()).toBeTruthy();
+
+            let complexInstance = complexComp.instance(ComplexComponent);
+            expect(complexInstance).toBeTruthy();
+            expect(complexInstance).toBe(complexComp.instance());
+            expect(complexInstance.counter).toBe(1);
+
+            // Check the no instance argument case
+            expect(complexComp.find('title-component')[0].instance()).toBe(complexComp.instance());
+
+            let titleInstance = complexComp.find('title-component')[0].instance(TitleComponent);
+            expect(titleInstance.subtitleOut).toBe('Counter: 1');
+
+            expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
+
+            complexInstance.setCounter(2);
+
+            await complexComp.update();
+            expect(titleInstance.subtitleOut).toBe('Counter: 2');
+            expect(complexComp.element().innerHTML).not.toContain('<p>Counter: 1</p>');
+            expect(complexComp.element().innerHTML).toContain('<p>Counter: 2</p>');
+
+            titleInstance.titleOut = 'Title 2';
+            await complexComp.update();
+            expect(complexComp.element().innerHTML).not.toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).toContain('<h1>Title 2</h1>');
         });
     });
 
