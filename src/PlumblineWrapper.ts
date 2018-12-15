@@ -128,7 +128,6 @@ export class PlumblineWrapper<T>
                     component.name + ' directive onto DOM element ' +
                     this.currentElement.name);
             }
-            
         }
     }
 
