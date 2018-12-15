@@ -150,7 +150,7 @@ class Tester {
             let declarations = mod.declarations;
             mod.declarations = [];
             if (declarations) {
-                this.baseDec(declarations, dontmock);
+                this.baseDec(declarations, dontmock, this.completeModule.imports);
             }
         }
     }

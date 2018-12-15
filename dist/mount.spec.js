@@ -91,7 +91,8 @@ describe('Mount', () => {
             selector: `complex-component`,
             template: `
             <simple-component></simple-component>
-            <title-component [titleIn]="'Title 1'" [subtitleIn]="'Counter: ' + counter"></title-component>
+            <title-component [titleIn]="'Title 1'" [subtitleIn]="'Counter: ' + counter">
+            </title-component>
             <span>{{counter}}</span>
         `
         })
@@ -473,6 +474,61 @@ describe('Mount', () => {
             expect(complexComp.element().innerHTML).toContain('<h1>Title 1</h1>');
             expect(complexComp.element().innerHTML).toContain('<p>Counter: 1</p>');
             expect(complexComp.find('h1').length).toEqual(2);
+        });
+    });
+    describe('On-The-Fly Markup', () => {
+        it('FlyComponent with Wrapper Module', async () => {
+            let WrapperModule = class WrapperModule {
+            };
+            WrapperModule = __decorate([
+                core_1.NgModule({
+                    declarations: [ComplexComponent],
+                    imports: [ShallowModule1]
+                })
+            ], WrapperModule);
+            let FlyComponent = class FlyComponent {
+            };
+            FlyComponent = __decorate([
+                core_1.Component({
+                    selector: `fly-component`,
+                    template: `<div>
+                    <complex-component></complex-component>
+                </div>`
+                })
+            ], FlyComponent);
+            let flyComp = await mount_1.mount(`<fly-component></fly-component>`, FlyComponent, {
+                mountModule: {
+                    imports: [WrapperModule]
+                }
+            });
+            expect(flyComp.element()).not.toEqual(null);
+            expect(flyComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(flyComp.element().innerHTML).toContain('<h1>Title 1</h1>');
+            expect(flyComp.element().innerHTML).toContain('<p>Counter: 1</p>');
+            expect(flyComp.find('h1').length).toEqual(2);
+        });
+        it('FlyComponent Low Level Access', async () => {
+            let FlyComponent = class FlyComponent {
+            };
+            FlyComponent = __decorate([
+                core_1.Component({
+                    selector: `fly-component`,
+                    template: `<div>
+                    <complex-component></complex-component>
+                </div>`
+                })
+            ], FlyComponent);
+            let flyComp = await mount_1.mount(`<fly-component></fly-component>`, FlyComponent, {
+                mountModule: {
+                    declarations: [ComplexComponent],
+                    imports: [ShallowModule1]
+                }
+            });
+            expect(flyComp.element()).not.toEqual(null);
+            expect(flyComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(flyComp.element().innerHTML).toContain('<h1>Title 1</h1>');
+            expect(flyComp.element().innerHTML).toContain('<p>Counter: 1</p>');
+            expect(flyComp.find('h1').length).toEqual(2);
         });
     });
     describe('Instance Injector', () => {
