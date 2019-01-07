@@ -1,7 +1,7 @@
 Plumbline
 ==========
 
-Plumbline is a Javascript testing utility that simplifies shallow mounting components in Angular and makes it easier to assert and traverse DOM elements.
+Plumbline is a Javascript testing utility that simplifies shallow mounting components in Angular and makes it easier to assert and traverse DOM elements.  Inspired by the Enzyme API for React.
 
 Plumbline also assists in the TestBed module compilation process by:
 * Eliminating duplicate component appearances (between different modules) into a single higher-level module.
@@ -36,10 +36,10 @@ mount<T>(
     options?: any): Promise<PlumblineWrapper<T>>
 ```
 
-markup:  DOM markup as it would appear in your application.
-testComponent:  Reference to the main component that will be rendered.
-testModule:  Mount and mock scheme describing how directives, modules and providers should be rendered.
-options:  Additional options for render (e.g. bindings).
+**markup:**  DOM markup as it would appear in your application.
+**testComponent:**  Reference to the main component that will be rendered.
+**testModule:**  Mount and mock scheme describing how directives, modules and providers should be rendered.
+**options:**  Additional options for render (e.g. bindings).
 
 The testModule use "mountModule" and "mockModule" parameters to optimize the render process.  "mountModule" will shallow render processes associated with that component.  "mockModule" will mock a component with empty methods and variable.  This is done to save on computation and render time.
 
@@ -61,26 +61,30 @@ PlumblineWrapper Methods
 ---------
 
 #### .find(selector)
-*selector takes CSS
+*selector takes CSS*
 *returns PlumblineWrapper[]*
 
 Gets a list of descendants from the current PlumblineWrapper reference filtered by a selector.
+
 
 #### .element()
 *returns NativeNode of element*
 
 Gets the native element of the current PlumblineWrapper reference.
 
+
 #### .parent()
 *returns PlumblineWrapper*
 
 Gets the parent node of the current PlumblineWrapper reference.
 
+
 #### .instance(component?)
-*selector takes component class reference
+*selector takes component class reference*
 *returns instance of component*
 
 Gets the injected instance of the current PlumblineWrapper reference.
+
 
 #### .update()
 *returns Promise of current PlumblineWrapper*
