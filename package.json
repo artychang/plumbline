@@ -1,7 +1,7 @@
 {
   "name": "plumbline",
   "version": "0.1.8",
-  "description": "Component Testing utilities for efficient Angular unit testing",
+  "description": "Angular component testing utility for simplistic shallow mounted unit testing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,6 +9,22 @@
     "lint": "ng lint",
     "build": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artychang/plumbline.git"
+  },
+  "keywords": [
+    "enzyme",
+    "javascript",
+    "shallow rendering",
+    "shallowRender",
+    "test",
+    "angular",
+    "testing",
+    "test utils",
+    "assertion helpers",
+    "tdd"
+  ],
   "typescript": {
     "definition": "dist/index"
   },
