@@ -36,9 +36,9 @@ mount<T>(
     options?: any): Promise<PlumblineWrapper<T>>
 ```
 
-**markup:**  DOM markup as it would appear in your application.
-**testComponent:**  Reference to the main component that will be rendered.
-**testModule:**  Mount and mock scheme describing how directives, modules and providers should be rendered.
+**markup:**  DOM markup as it would appear in your application. <br/>
+**testComponent:**  Reference to the main component that will be rendered. <br/>
+**testModule:**  Mount and mock scheme describing how directives, modules and providers should be rendered. <br/>
 **options:**  Additional options for render (e.g. bindings).
 
 The testModule use "mountModule" and "mockModule" parameters to optimize the render process.  "mountModule" will shallow render processes associated with that component.  "mockModule" will mock a component with empty methods and variable.  This is done to save on computation and render time.
@@ -61,33 +61,33 @@ PlumblineWrapper Methods
 ---------
 
 #### .find(selector)
-*selector takes CSS*
-*returns PlumblineWrapper[]*
+*@input selector takes CSS*  <br/>
+*@return PlumblineWrapper[]*
 
 Gets a list of descendants from the current PlumblineWrapper reference filtered by a selector.
 
 
 #### .element()
-*returns NativeNode of element*
+*@return NativeNode of element*
 
 Gets the native element of the current PlumblineWrapper reference.
 
 
 #### .parent()
-*returns PlumblineWrapper*
+*@return PlumblineWrapper*
 
 Gets the parent node of the current PlumblineWrapper reference.
 
 
 #### .instance(component?)
-*selector takes component class reference*
-*returns instance of component*
+*@input selector takes component class reference*  <br/>
+*@return instance of component*
 
 Gets the injected instance of the current PlumblineWrapper reference.
 
 
 #### .update()
-*returns Promise of current PlumblineWrapper*
+*@return Promise of current PlumblineWrapper*
 
 Runs ngOnChanges, detectChanges and whenStable for changes in Angular.  You may also use await on this method to keep your process stack in sync.
 
