@@ -378,10 +378,11 @@ export class Tester<T>
             if (isModuleWithProviders(thing)) {
                 let leftoverMod = copyModule(resolveModule(thing));
                 delete leftoverMod['ngModule'];
-                return [
-                    this.cacheImp(thing.ngModule, dontmock),
-                    this.cacheImp(leftoverMod, dontmock)
-                ];
+
+                let baselineMod = [this.cacheImp(thing.ngModule, dontmock)];
+                //if (dontmock)
+                //    baselineMod.push(this.cacheImp(leftoverMod, dontmock));
+                return baselineMod;
             }
 
             let pointer: any = null;

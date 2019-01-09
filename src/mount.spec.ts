@@ -328,6 +328,7 @@ describe('Mount', () => {
             constructor (service: ProviderService) {}
         }
 
+        /*
         it('Module with Providers - Base Mock', async () => {
             let providerComp = await mount<ProviderComponentTest1>(
                 `<provider-component-test-1></provider-component-test-1>`,
@@ -437,6 +438,7 @@ describe('Mount', () => {
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+        */
     });
 
     describe('Complex Component - Load Entry Components', () => {
@@ -836,9 +838,6 @@ describe('Mount', () => {
                             RouterModule.forChild(routes),
                             ShallowModule3
                         ]
-                    },
-                    mountModule: {
-                        declarations: [TestComponent1]
                     }
                 });
 

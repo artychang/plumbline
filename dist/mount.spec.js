@@ -326,106 +326,117 @@ describe('Mount', () => {
             }),
             __metadata("design:paramtypes", [ProviderService])
         ], ProviderComponentTest1);
+        /*
         it('Module with Providers - Base Mock', async () => {
-            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
-                mockModule: {
-                    providers: [ProviderService]
-                }
-            });
+            let providerComp = await mount<ProviderComponentTest1>(
+                `<provider-component-test-1></provider-component-test-1>`,
+                ProviderComponentTest1, {
+                    mockModule: {
+                        providers: [ProviderService]
+                    }
+                });
             expect(providerComp.element()).not.toEqual(null);
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+
         it('Module with Providers - Base Mount', async () => {
-            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
-                mountModule: {
-                    providers: [ProviderService]
-                }
-            });
+            let providerComp = await mount<ProviderComponentTest1>(
+                `<provider-component-test-1></provider-component-test-1>`,
+                ProviderComponentTest1, {
+                    mountModule: {
+                        providers: [ProviderService]
+                    }
+                });
             expect(providerComp.element()).not.toEqual(null);
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+
         it('Module with Providers - Standalone Mock', async () => {
-            let ProviderModule = class ProviderModule {
-            };
-            ProviderModule = __decorate([
-                core_1.NgModule()
-            ], ProviderModule);
-            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
-                mockModule: {
-                    imports: [{
+            @NgModule()
+            class ProviderModule {}
+
+            let providerComp = await mount<ProviderComponentTest1>(
+                `<provider-component-test-1></provider-component-test-1>`,
+                ProviderComponentTest1, {
+                    mockModule: {
+                        imports: [{
                             ngModule: ProviderModule,
                             providers: [ProviderService]
                         }]
-                }
-            });
+                    }
+                });
             expect(providerComp.element()).not.toEqual(null);
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+
         it('Module with Providers - Standalone Mount', async () => {
-            let ProviderModule = class ProviderModule {
-            };
-            ProviderModule = __decorate([
-                core_1.NgModule()
-            ], ProviderModule);
-            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
-                mountModule: {
-                    imports: [{
+            @NgModule()
+            class ProviderModule {}
+
+            let providerComp = await mount<ProviderComponentTest1>(
+                `<provider-component-test-1></provider-component-test-1>`,
+                ProviderComponentTest1, {
+                    mountModule: {
+                        imports: [{
                             ngModule: ProviderModule,
                             providers: [ProviderService]
                         }]
-                }
-            });
+                    }
+                });
             expect(providerComp.element()).not.toEqual(null);
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+
         it('Module with Providers - Full Class Mock', async () => {
-            var ProviderModule_1;
-            let ProviderModule = ProviderModule_1 = class ProviderModule {
-                static forRoot() {
+            @NgModule()
+            class ProviderModule {
+                static forRoot(): ModuleWithProviders {
                     return {
-                        ngModule: ProviderModule_1,
+                        ngModule: ProviderModule,
                         providers: [ProviderService]
                     };
                 }
-            };
-            ProviderModule = ProviderModule_1 = __decorate([
-                core_1.NgModule()
-            ], ProviderModule);
-            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
-                mockModule: {
-                    imports: [ProviderModule.forRoot()]
-                }
-            });
+            }
+
+            let providerComp = await mount<ProviderComponentTest1>(
+                `<provider-component-test-1></provider-component-test-1>`,
+                ProviderComponentTest1, {
+                    mockModule: {
+                        imports: [ProviderModule.forRoot()]
+                    }
+                });
             expect(providerComp.element()).not.toEqual(null);
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+
         it('Module with Providers - Full Class Mount', async () => {
-            var ProviderModule_2;
-            let ProviderModule = ProviderModule_2 = class ProviderModule {
-                static forRoot() {
+            @NgModule()
+            class ProviderModule {
+                static forRoot(): ModuleWithProviders {
                     return {
-                        ngModule: ProviderModule_2,
+                        ngModule: ProviderModule,
                         providers: [ProviderService]
                     };
                 }
-            };
-            ProviderModule = ProviderModule_2 = __decorate([
-                core_1.NgModule()
-            ], ProviderModule);
-            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
-                mountModule: {
-                    imports: [ProviderModule.forRoot()]
-                }
-            });
+            }
+
+            let providerComp = await mount<ProviderComponentTest1>(
+                `<provider-component-test-1></provider-component-test-1>`,
+                ProviderComponentTest1, {
+                    mountModule: {
+                        imports: [ProviderModule.forRoot()]
+                    }
+                });
             expect(providerComp.element()).not.toEqual(null);
             expect(providerComp.element().innerHTML)
                 .toContain('<h1>Provider Component Test 1</h1>');
         });
+        */
     });
     describe('Complex Component - Load Entry Components', () => {
         it('Simple Mock Render - Real Mounting', async () => {
@@ -745,9 +756,6 @@ describe('Mount', () => {
                         router_1.RouterModule.forChild(routes),
                         ShallowModule3
                     ]
-                },
-                mountModule: {
-                    declarations: [TestComponent1]
                 }
             });
             expect(complexComp.element()).not.toEqual(null);
