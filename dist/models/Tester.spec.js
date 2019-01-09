@@ -576,7 +576,7 @@ describe('Tester', () => {
             let tmodule = setup.getCompleteModule();
             // console.log(tmodule);
             expect(JSON.stringify(tmodule)).toEqual(JSON.stringify({
-                imports: [null, null, null, null, [null]],
+                imports: [null, null, null, null, [null], [null]],
                 declarations: [null],
                 providers: [],
                 exports: [],
@@ -584,7 +584,7 @@ describe('Tester', () => {
                 schemas: []
             }));
             // RouterTestingModule mock import created
-            expect(tmodule.imports.length).toEqual(5);
+            expect(tmodule.imports.length).toEqual(6);
             // expect(tmodule.imports[0].name).toEqual(createMockImport(RouterModule).name);
             // TestComponent was created
             expect(tmodule.declarations.length).toEqual(1);

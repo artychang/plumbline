@@ -376,7 +376,12 @@ export class Tester<T>
 
             // Todo: May need to adjust the ngModule case in the future
             if (isModuleWithProviders(thing)) {
-                return [this.cacheImp(thing.ngModule, dontmock)];
+                let leftoverMod = copyModule(resolveModule(thing));
+                delete leftoverMod['ngModule'];
+                return [
+                    this.cacheImp(thing.ngModule, dontmock),
+                    this.cacheImp(leftoverMod, dontmock)
+                ];
             }
 
             let pointer: any = null;

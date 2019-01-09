@@ -4,7 +4,7 @@ Plumbline
 Plumbline is a Javascript testing utility that simplifies shallow mounting components in Angular and makes it easier to assert and traverse DOM elements.  Inspired by the Enzyme API for React.
 
 Plumbline also assists in the TestBed module compilation process by:
-* Eliminating duplicate component appearances (between different modules) into a single higher-level module.
+* Consolidating duplicate component appearances (between different modules) into a single higher-level module.
 * Allowing the tester to specify whether individual components are to be mounted or mocked.
 * Mocking entire root modules for quick error free mounting.
 
@@ -41,7 +41,7 @@ mount<T>(
 **testModule:**  Mount and mock scheme describing how directives, modules and providers should be rendered. <br/>
 **options:**  Additional options for render (e.g. bindings).
 
-The testModule use "mountModule" and "mockModule" parameters to optimize the render process.  "mountModule" will shallow render processes associated with that component.  "mockModule" will mock a component with empty methods and variable.  This is done to save on computation and render time.
+The testModule use "mountModule" and "mockModule" parameters to optimize the render process.  "mountModule" will shallow render processes associated with that component.  "mockModule" will mock a component with empty methods and variables.  This allows the tester to save on computation and render time for non-essential functionality during testing.
 
 ```javascript
 let complexComp = await mount<ComplexComponent>(
@@ -62,40 +62,35 @@ PlumblineWrapper Methods
 
 #### .find(selector)
 *@input selector takes CSS*  <br/>
-*@return PlumblineWrapper[]*
-
+*@return PlumblineWrapper[]* <br/>
 Gets a list of descendants from the current PlumblineWrapper reference filtered by a selector.
 
 
 #### .element()
-*@return NativeNode of element*
-
+*@return NativeNode of element* <br/>
 Gets the native element of the current PlumblineWrapper reference.
 
 
 #### .parent()
-*@return PlumblineWrapper*
-
+*@return PlumblineWrapper* <br/>
 Gets the parent node of the current PlumblineWrapper reference.
 
 
 #### .instance(component?)
-*@input selector takes component class reference*  <br/>
-*@return instance of component*
-
+*@input selector takes component class reference* <br/>
+*@return instance of component* <br/>
 Gets the injected instance of the current PlumblineWrapper reference.
 
 
 #### .update()
-*@return Promise of current PlumblineWrapper*
-
+*@return Promise of current PlumblineWrapper* <br/>
 Runs ngOnChanges, detectChanges and whenStable for changes in Angular.  You may also use await on this method to keep your process stack in sync.
 
 
 Specific Examples
 ---------
 
-For many more examples of mount and testing schemes, you can review the specs of the github project.  There I have written out many unit tests that actually show the capabilities of the package.
+For many more examples of mount and testing schemes, you can review the specs of the github project.  There I have written out many unit tests that actually showcase the capabilities of the package.
 
 An Angular component can be mounted simply by providing raw markup and its class reference.
 

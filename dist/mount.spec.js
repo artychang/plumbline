@@ -314,6 +314,118 @@ describe('Mount', () => {
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<h1>Provider Component 1</h1>');
         });
+        class ProviderService {
+        }
+        let ProviderComponentTest1 = class ProviderComponentTest1 {
+            constructor(service) { }
+        };
+        ProviderComponentTest1 = __decorate([
+            core_1.Component({
+                selector: 'provider-component-test-1',
+                template: `<h1>Provider Component Test 1</h1>`
+            }),
+            __metadata("design:paramtypes", [ProviderService])
+        ], ProviderComponentTest1);
+        it('Module with Providers - Base Mock', async () => {
+            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
+                mockModule: {
+                    providers: [ProviderService]
+                }
+            });
+            expect(providerComp.element()).not.toEqual(null);
+            expect(providerComp.element().innerHTML)
+                .toContain('<h1>Provider Component Test 1</h1>');
+        });
+        it('Module with Providers - Base Mount', async () => {
+            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
+                mountModule: {
+                    providers: [ProviderService]
+                }
+            });
+            expect(providerComp.element()).not.toEqual(null);
+            expect(providerComp.element().innerHTML)
+                .toContain('<h1>Provider Component Test 1</h1>');
+        });
+        it('Module with Providers - Standalone Mock', async () => {
+            let ProviderModule = class ProviderModule {
+            };
+            ProviderModule = __decorate([
+                core_1.NgModule()
+            ], ProviderModule);
+            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
+                mockModule: {
+                    imports: [{
+                            ngModule: ProviderModule,
+                            providers: [ProviderService]
+                        }]
+                }
+            });
+            expect(providerComp.element()).not.toEqual(null);
+            expect(providerComp.element().innerHTML)
+                .toContain('<h1>Provider Component Test 1</h1>');
+        });
+        it('Module with Providers - Standalone Mount', async () => {
+            let ProviderModule = class ProviderModule {
+            };
+            ProviderModule = __decorate([
+                core_1.NgModule()
+            ], ProviderModule);
+            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
+                mountModule: {
+                    imports: [{
+                            ngModule: ProviderModule,
+                            providers: [ProviderService]
+                        }]
+                }
+            });
+            expect(providerComp.element()).not.toEqual(null);
+            expect(providerComp.element().innerHTML)
+                .toContain('<h1>Provider Component Test 1</h1>');
+        });
+        it('Module with Providers - Full Class Mock', async () => {
+            var ProviderModule_1;
+            let ProviderModule = ProviderModule_1 = class ProviderModule {
+                static forRoot() {
+                    return {
+                        ngModule: ProviderModule_1,
+                        providers: [ProviderService]
+                    };
+                }
+            };
+            ProviderModule = ProviderModule_1 = __decorate([
+                core_1.NgModule()
+            ], ProviderModule);
+            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
+                mockModule: {
+                    imports: [ProviderModule.forRoot()]
+                }
+            });
+            expect(providerComp.element()).not.toEqual(null);
+            expect(providerComp.element().innerHTML)
+                .toContain('<h1>Provider Component Test 1</h1>');
+        });
+        it('Module with Providers - Full Class Mount', async () => {
+            var ProviderModule_2;
+            let ProviderModule = ProviderModule_2 = class ProviderModule {
+                static forRoot() {
+                    return {
+                        ngModule: ProviderModule_2,
+                        providers: [ProviderService]
+                    };
+                }
+            };
+            ProviderModule = ProviderModule_2 = __decorate([
+                core_1.NgModule()
+            ], ProviderModule);
+            let providerComp = await mount_1.mount(`<provider-component-test-1></provider-component-test-1>`, ProviderComponentTest1, {
+                mountModule: {
+                    imports: [ProviderModule.forRoot()]
+                }
+            });
+            expect(providerComp.element()).not.toEqual(null);
+            expect(providerComp.element().innerHTML)
+                .toContain('<h1>Provider Component Test 1</h1>');
+        });
     });
     describe('Complex Component - Load Entry Components', () => {
         it('Simple Mock Render - Real Mounting', async () => {
@@ -585,7 +697,15 @@ describe('Mount', () => {
         });
     });
     describe('Edge Case: Router', () => {
-        it('RouterTestingModule #1', async () => {
+        it('RouterTestingModule #1 Mock', async () => {
+            let simpleComp = await mount_1.mount(`<simple-component></simple-component>`, SimpleComponent, {
+                mockModule: {
+                    imports: [testing_1.RouterTestingModule]
+                }
+            });
+            expect(simpleComp.element()).not.toEqual(null);
+        });
+        it('RouterTestingModule #1 Mount', async () => {
             let simpleComp = await mount_1.mount(`<simple-component></simple-component>`, SimpleComponent, {
                 mountModule: {
                     imports: [testing_1.RouterTestingModule]
@@ -593,7 +713,15 @@ describe('Mount', () => {
             });
             expect(simpleComp.element()).not.toEqual(null);
         });
-        it('RouterTestingModule #2', async () => {
+        it('RouterTestingModule #2 Mock', async () => {
+            let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
+                mockModule: {
+                    imports: [testing_1.RouterTestingModule, ShallowModule3]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+        });
+        it('RouterTestingModule #2 Mount', async () => {
             let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
                 mountModule: {
                     imports: [testing_1.RouterTestingModule, ShallowModule3]
@@ -601,7 +729,7 @@ describe('Mount', () => {
             });
             expect(complexComp.element()).not.toEqual(null);
         });
-        it('RouterTestingModule #3', async () => {
+        it('RouterTestingModule #3 Mock', async () => {
             const routes = [
                 {
                     path: '', component: TestComponent1
@@ -612,6 +740,30 @@ describe('Mount', () => {
             ];
             let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
                 mockModule: {
+                    declarations: [TestComponent1],
+                    imports: [
+                        router_1.RouterModule.forChild(routes),
+                        ShallowModule3
+                    ]
+                },
+                mountModule: {
+                    declarations: [TestComponent1]
+                }
+            });
+            expect(complexComp.element()).not.toEqual(null);
+        });
+        it('RouterTestingModule #3 Mount', async () => {
+            const routes = [
+                {
+                    path: '', component: TestComponent1
+                }, {
+                    path: '**',
+                    redirectTo: '/404'
+                }
+            ];
+            let complexComp = await mount_1.mount(`<complex-component></complex-component>`, ComplexComponent, {
+                mountModule: {
+                    declarations: [TestComponent1],
                     imports: [
                         router_1.RouterModule.forChild(routes),
                         ShallowModule3

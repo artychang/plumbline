@@ -343,7 +343,12 @@ class Tester {
             }
             // Todo: May need to adjust the ngModule case in the future
             if (utils_1.isModuleWithProviders(thing)) {
-                return [this.cacheImp(thing.ngModule, dontmock)];
+                let leftoverMod = copyModule(resolveModule(thing));
+                delete leftoverMod['ngModule'];
+                return [
+                    this.cacheImp(thing.ngModule, dontmock),
+                    this.cacheImp(leftoverMod, dontmock)
+                ];
             }
             let pointer = null;
             // Use the regular import if we specify
