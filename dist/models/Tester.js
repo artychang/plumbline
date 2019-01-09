@@ -341,14 +341,28 @@ class Tester {
                 });
                 return impList;
             }
-            // Todo: May need to adjust the ngModule case in the future
+            // Handle the special ModuleWithProviders case
             if (utils_1.isModuleWithProviders(thing)) {
-                let leftoverMod = copyModule(resolveModule(thing));
-                delete leftoverMod['ngModule'];
-                let baselineMod = [this.cacheImp(thing.ngModule, dontmock)];
-                //if (dontmock)
-                //    baselineMod.push(this.cacheImp(leftoverMod, dontmock));
-                return baselineMod;
+                let copied = copyModule(resolveModule(thing));
+                if (dontmock) {
+                    let pointer1 = null;
+                    pointer1 = createPropImport(thing, copied);
+                    // Create a container for the module
+                    pointer1 = createPropImport(thing, {
+                        imports: [pointer1],
+                        exports: [pointer1],
+                        schemas: this.completeModule.schemas
+                    });
+                    this.cacheModule.imports.set(thing, pointer1);
+                    return [pointer1];
+                }
+                else {
+                    delete copied['ngModule'];
+                    let baselineMod = [this.cacheImp(thing.ngModule, dontmock)];
+                    // if (dontmock)
+                    //    baselineMod.push(this.cacheImp(copied, dontmock));
+                    return baselineMod;
+                }
             }
             let pointer = null;
             // Use the regular import if we specify
