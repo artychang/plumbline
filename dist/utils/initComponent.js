@@ -22,6 +22,13 @@ function initComponent(template, bindings) {
         core_1.Component({ template: template })
     ], RenderComponent);
     Object.assign(RenderComponent.prototype, spyBindings(bindings));
+    // Enable two-way binding that overwrites & updates input
+    Object.keys(bindings).forEach((key) => {
+        Object.defineProperty(RenderComponent.prototype, key, {
+            get: () => bindings[key],
+            set: (v) => { bindings[key] = v; }
+        });
+    });
     return RenderComponent;
 }
 exports.initComponent = initComponent;
