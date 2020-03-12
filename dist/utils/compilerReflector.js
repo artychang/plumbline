@@ -80,7 +80,7 @@ function createBuiltinExternalReferencesMap() {
     map.set(compiler_1.Identifiers.interpolate, core_1.ɵinterpolate);
     map.set(compiler_1.Identifiers.EMPTY_ARRAY, core_1.ɵEMPTY_ARRAY);
     map.set(compiler_1.Identifiers.EMPTY_MAP, core_1.ɵEMPTY_MAP);
-    map.set(compiler_1.Identifiers.Renderer, core_1.Renderer);
+    map.set(compiler_1.Identifiers.Renderer, core_1.Renderer2);
     map.set(compiler_1.Identifiers.viewDef, core_1.ɵvid);
     map.set(compiler_1.Identifiers.elementDef, core_1.ɵeld);
     map.set(compiler_1.Identifiers.anchorDef, core_1.ɵand);
