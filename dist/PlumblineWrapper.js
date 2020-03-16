@@ -132,7 +132,9 @@ class PlumblineWrapper {
     async update() {
         return new Promise((resolve, reject) => {
             this.checkRender();
-            this.rendering.instance.ngOnChanges();
+            if (this.rendering.instance.ngOnChanges) {
+                this.rendering.instance.ngOnChanges();
+            }
             this.rendering.fixture.detectChanges();
             return this.rendering.fixture.whenStable().then(() => {
                 resolve(this);
