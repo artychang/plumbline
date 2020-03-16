@@ -475,9 +475,7 @@ describe('Renderer', () => {
             expect(JSON.stringify(renderer.renderModule)).toEqual(JSON.stringify({
                 imports: [
                     null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null, null, null, null,
-                    null, null
+                    null, null, null, null, null
                 ],
                 providers: [],
                 declarations: [InputComponent1, null],
