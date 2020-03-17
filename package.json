@@ -55,7 +55,6 @@
     "@angular/platform-browser": "5.x",
     "classlist.js": "^1.1.20150312",
     "ng-mocks": "^5.3.0",
-    "npm": "^6.4.1",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "web-animations-js": "^2.3.1",
