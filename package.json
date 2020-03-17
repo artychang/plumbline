@@ -12,8 +12,8 @@
     "build": "npm run clean && tsc",
     "build:all": "npm run lint && npm run test && npm run build",
     "versionDistrib": "git push && git push --tags",
-    "versionBumpPA": "npm version patch && npm run versionDistrib",
-    "versionBumpMI": "npm version minor && npm run versionDistrib"
+    "versionBumpPA": "npm version patch && npm run versionDistrib && echo 'To publish:\nnpm publish'",
+    "versionBumpMI": "npm version minor && npm run versionDistrib && echo 'To publish:\nnpm publish'"
   },
   "repository": {
     "type": "git",
