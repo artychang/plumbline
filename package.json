@@ -11,8 +11,9 @@
     "lint": "ng lint",
     "build": "npm run clean && tsc",
     "build:all": "npm run lint && npm run test && npm run build",
-    "versionBumpPA": "npm version patch",
-    "versionBumpMI": "npm version minor",
+    "versionDistrib": "git push && git push --tags",
+    "versionBumpPA": "npm version patch && npm run versionDistrib",
+    "versionBumpMI": "npm version minor && npm run versionDistrib",
     "publish": "npm publish"
   },
   "repository": {
