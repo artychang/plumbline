@@ -14,12 +14,20 @@ The current version of Plumbline is only tested to work with Angular 5, Jasmine 
 
 ### Installation
 
-To include Plumbline your Angular application, first install with npm
+To include Plumbline in your Angular application, install with npm
 
 ```
 npm i --save-dev plumbline
 ```
 
+Angular version support is as follows:
+
+| Plumbline    | Angular | Installation                 |
+| ------------ | ------- | ---------------------------- |
+| 5.x.x        | 5.x     | npm i --save-dev plumbline@5 |
+| 6.x.x        | 6.x     | npm i --save-dev plumbline   |
+| TBD          | 7.x     | TBD                          |
+| TBD          | 8.x     | TBD                          |
 
 Basic Usage
 --------

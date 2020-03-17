@@ -3,23 +3,35 @@
   "version": "6.0.0",
   "description": "Angular component testing utility for simplistic shallow mounted unit testing",
   "main": "dist/index.js",
+  "author": "https://github.com/artychang/plumbline/graphs/contributors",
   "types": "dist/index.d.ts",
   "scripts": {
+    "clean": "rm -rf dist",
     "test": "ng test",
     "lint": "ng lint",
-    "build": "tsc"
+    "build": "npm run clean && tsc",
+    "build:all": "npm run lint && npm run test && npm run build",
+    "versionDistrib": "git push && git push --tags",
+    "versionBumpPA": "npm version patch && npm run versionDistrib",
+    "versionBumpMI": "npm version minor && npm run versionDistrib"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/artychang/plumbline.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/artychang/plumbline/issues"
   },
   "keywords": [
     "enzyme",
     "javascript",
     "shallow rendering",
     "shallowRender",
+    "mock",
+    "shallow",
     "test",
     "angular",
+    "components",
     "testing",
     "test utils",
     "assertion helpers",
@@ -28,12 +40,19 @@
   "typescript": {
     "definition": "dist/index"
   },
+  "peerDependencies": {
+    "@angular/common": "6.x",
+    "@angular/compiler": "6.x",
+    "@angular/core": "6.x",
+    "@angular/forms": "6.x",
+    "@angular/platform-browser": "6.x"
+  },
   "dependencies": {
-    "@angular/common": "6.1.10",
-    "@angular/compiler": "6.1.10",
-    "@angular/core": "6.1.10",
-    "@angular/forms": "6.1.10",
-    "@angular/platform-browser": "6.1.10",
+    "@angular/common": "6.x",
+    "@angular/compiler": "6.x",
+    "@angular/core": "6.x",
+    "@angular/forms": "6.x",
+    "@angular/platform-browser": "6.x",
     "classlist.js": "^1.1.20150312",
     "ng-mocks": "^6.3.0",
     "rxjs": "6.0.0",
@@ -41,15 +60,14 @@
     "zone.js": "^0.8.29"
   },
   "typings": "dist/index",
-  "author": "Arthur Chang",
   "license": "MIT",
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.0",
-    "@angular/animations": "6.1.10",
+    "@angular/animations": "6.x",
     "@angular/cli": "^6.2.9",
-    "@angular/compiler-cli": "6.1.10",
-    "@angular/platform-browser-dynamic": "6.1.10",
-    "@angular/router": "6.1.10",
+    "@angular/compiler-cli": "6.x",
+    "@angular/platform-browser-dynamic": "6.x",
+    "@angular/router": "6.x",
     "@types/jasmine": "^2.8.8",
     "@types/lodash": "^4.14.96",
     "angular-mocks": "^1.7.2",
