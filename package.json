@@ -12,7 +12,8 @@
     "build": "npm run clean && tsc",
     "build:all": "npm run lint && npm run test && npm run build",
     "versionBumpPA": "npm version patch",
-    "versionBumpMI": "npm version minor"
+    "versionBumpMI": "npm version minor",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",
