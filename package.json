@@ -1,6 +1,6 @@
 {
   "name": "plumbline",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Angular component testing utility for simplistic shallow mounted unit testing",
   "main": "dist/index.js",
   "author": "https://github.com/artychang/plumbline/graphs/contributors",
@@ -41,18 +41,18 @@
     "definition": "dist/index"
   },
   "peerDependencies": {
-    "@angular/common": "7.x",
-    "@angular/compiler": "7.x",
-    "@angular/core": "7.x",
-    "@angular/forms": "7.x",
-    "@angular/platform-browser": "7.x"
+    "@angular/common": "8.x",
+    "@angular/compiler": "8.x",
+    "@angular/core": "8.x",
+    "@angular/forms": "8.x",
+    "@angular/platform-browser": "8.x"
   },
   "dependencies": {
-    "@angular/common": "7.x",
-    "@angular/compiler": "7.x",
-    "@angular/core": "7.x",
-    "@angular/forms": "7.x",
-    "@angular/platform-browser": "7.x",
+    "@angular/common": "8.x",
+    "@angular/compiler": "8.x",
+    "@angular/core": "8.x",
+    "@angular/forms": "8.x",
+    "@angular/platform-browser": "8.x",
     "classlist.js": "^1.1.20150312",
     "ng-mocks": "^6.3.0",
     "rxjs": "6.0.0",
@@ -63,11 +63,11 @@
   "license": "MIT",
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.9",
-    "@angular/animations": "7.x",
-    "@angular/cli": "7.x",
-    "@angular/compiler-cli": "7.x",
-    "@angular/platform-browser-dynamic": "7.x",
-    "@angular/router": "7.x",
+    "@angular/animations": "8.x",
+    "@angular/cli": "8.x",
+    "@angular/compiler-cli": "8.x",
+    "@angular/platform-browser-dynamic": "8.x",
+    "@angular/router": "8.x",
     "@types/jasmine": "^2.8.8",
     "@types/lodash": "^4.14.96",
     "angular-mocks": "^1.7.2",
