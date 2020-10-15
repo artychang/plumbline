@@ -69,7 +69,7 @@ class EmbededItem
             `
 })
 export class DirectiveComponent {
-    @ContentChild('brand') brandTemplate: TemplateRef<any>;
+    @ContentChild('brand', {static: false}) brandTemplate: TemplateRef<any>;
 
     hasBrandTemplate(): boolean {
         return this.brandTemplate != null;
