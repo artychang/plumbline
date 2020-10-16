@@ -62,7 +62,7 @@
   "typings": "dist/index",
   "license": "MIT",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.9",
+    "@angular-devkit/build-angular": "^0.1001.7",
     "@angular/animations": "8.x",
     "@angular/cli": "8.x",
     "@angular/compiler-cli": "8.x",
