@@ -57,7 +57,7 @@
     "ng-mocks": "^6.3.0",
     "rxjs": "6.0.0",
     "web-animations-js": "^2.3.1",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.10.3"
   },
   "typings": "dist/index",
   "license": "MIT",
