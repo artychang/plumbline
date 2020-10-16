@@ -33,10 +33,11 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlumblineWrapper = exports.mount = void 0;
 var mount_1 = __webpack_require__(/*! ./lib/mount */ "./src/lib/mount.ts");
-exports.mount = mount_1.mount;
+Object.defineProperty(exports, "mount", { enumerable: true, get: function () { return mount_1.mount; } });
 var PlumblineWrapper_1 = __webpack_require__(/*! ./lib/PlumblineWrapper */ "./src/lib/PlumblineWrapper.ts");
-exports.PlumblineWrapper = PlumblineWrapper_1.PlumblineWrapper;
+Object.defineProperty(exports, "PlumblineWrapper", { enumerable: true, get: function () { return PlumblineWrapper_1.PlumblineWrapper; } });
 
 
 /***/ }),
@@ -134,6 +135,7 @@ exports.default = PlumblineRenderer;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlumblineWrapper = void 0;
 const PlumblineAdapter_1 = __webpack_require__(/*! ./PlumblineAdapter */ "./src/lib/PlumblineAdapter.ts");
 const platform_browser_1 = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 class PlumblineWrapper {
@@ -455,6 +457,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createMockProvider = exports.createPropImport = exports.createMockImport = exports.createMockDeclaration = exports.Tester = exports.copyModule = exports.resolveModule = void 0;
 const ng_mocks_1 = __webpack_require__(/*! ng-mocks */ "./node_modules/ng-mocks/dist/index.js");
 const core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 const utils_1 = __webpack_require__(/*! ./../utils/utils */ "./src/lib/utils/utils.ts");
@@ -996,6 +999,7 @@ function getClassMethods(className) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.mount = void 0;
 const PlumblineWrapper_1 = __webpack_require__(/*! ./PlumblineWrapper */ "./src/lib/PlumblineWrapper.ts");
 function mount(node, testComponent, testModule, options) {
     return (new PlumblineWrapper_1.PlumblineWrapper()).create(node, testComponent, testModule, options).render();
@@ -1022,6 +1026,7 @@ exports.mount = mount;
  * found in the LICENSE file at https://angular.io/license
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.JitReflector = exports.MODULE_SUFFIX = void 0;
 const compiler_1 = __webpack_require__(/*! @angular/compiler */ "./node_modules/@angular/compiler/fesm2015/compiler.js");
 const core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 exports.MODULE_SUFFIX = '';
@@ -1134,6 +1139,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.initComponent = void 0;
 const core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 function spyBindings(bindings) {
     Object.keys(bindings).forEach(function (key) {
@@ -1174,6 +1180,7 @@ exports.initComponent = initComponent;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.resolveNgModule = exports.isNgModule = exports.isModuleWithProviders = exports.isClassProvider = exports.isValueProvider = exports.directiveResolver = exports.pipeResolver = exports.jitReflector = void 0;
 const compilerReflector_1 = __webpack_require__(/*! ./compilerReflector */ "./src/lib/utils/compilerReflector.ts");
 const compiler_1 = __webpack_require__(/*! @angular/compiler */ "./node_modules/@angular/compiler/fesm2015/compiler.js");
 let jitReflector = new compilerReflector_1.JitReflector();

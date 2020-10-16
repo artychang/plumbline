@@ -1,6 +1,6 @@
 {
   "name": "plumbline",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "Angular component testing utility for simplistic shallow mounted unit testing",
   "main": "dist/index.js",
   "author": "https://github.com/artychang/plumbline/graphs/contributors",
@@ -41,18 +41,18 @@
     "definition": "dist/index"
   },
   "peerDependencies": {
-    "@angular/common": "9.x",
-    "@angular/compiler": "9.x",
-    "@angular/core": "9.x",
-    "@angular/forms": "9.x",
-    "@angular/platform-browser": "9.x"
+    "@angular/common": "10.x",
+    "@angular/compiler": "10.x",
+    "@angular/core": "10.x",
+    "@angular/forms": "10.x",
+    "@angular/platform-browser": "10.x"
   },
   "dependencies": {
-    "@angular/common": "9.x",
-    "@angular/compiler": "9.x",
-    "@angular/core": "9.x",
-    "@angular/forms": "9.x",
-    "@angular/platform-browser": "9.x",
+    "@angular/common": "10.x",
+    "@angular/compiler": "10.x",
+    "@angular/core": "10.x",
+    "@angular/forms": "10.x",
+    "@angular/platform-browser": "10.x",
     "classlist.js": "^1.1.20150312",
     "ng-mocks": "^6.3.0",
     "rxjs": "6.0.0",
@@ -63,11 +63,11 @@
   "license": "MIT",
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.9",
-    "@angular/animations": "9.x",
-    "@angular/cli": "9.x",
-    "@angular/compiler-cli": "9.x",
-    "@angular/platform-browser-dynamic": "9.x",
-    "@angular/router": "9.x",
+    "@angular/animations": "10.x",
+    "@angular/cli": "10.x",
+    "@angular/compiler-cli": "10.x",
+    "@angular/platform-browser-dynamic": "10.x",
+    "@angular/router": "10.x",
     "@types/jasmine": "^2.8.8",
     "@types/lodash": "^4.14.96",
     "angular-mocks": "^1.7.2",
@@ -86,6 +86,6 @@
     "primeng": "6.1.7",
     "ts-node": "^6.1.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.8.3"
+    "typescript": "^4.0.3"
   }
 }

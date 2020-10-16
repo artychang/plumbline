@@ -401,7 +401,7 @@ describe('Mount', () => {
         it('Module with Providers - Full Class Mock', async () => {
             @NgModule()
             class ProviderModule {
-                static forRoot(): ModuleWithProviders {
+                static forRoot(): ModuleWithProviders<ProviderModule> {
                     return {
                         ngModule: ProviderModule,
                         providers: [ProviderService]
@@ -427,7 +427,7 @@ describe('Mount', () => {
         it('Module with Providers - Full Class Mount', async () => {
             @NgModule()
             class ProviderModule {
-                static forRoot(): ModuleWithProviders {
+                static forRoot(): ModuleWithProviders<ProviderModule> {
                     return {
                         ngModule: ProviderModule,
                         providers: [ProviderService]
