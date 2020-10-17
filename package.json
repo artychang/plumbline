@@ -1,6 +1,6 @@
 {
   "name": "plumbline",
-  "version": "10.0.3",
+  "version": "10.0.4",
   "description": "Angular component testing utility for simplistic shallow mounted unit testing",
   "main": "dist/main.js",
   "author": "https://github.com/artychang/plumbline/graphs/contributors",
