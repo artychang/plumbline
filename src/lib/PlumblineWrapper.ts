@@ -12,6 +12,7 @@ export class PlumblineWrapper<T>
 
 
     constructor() {
+        console.log('PlumblineWrapper constructor');
         // Generate a renderer for mount operation
         this.renderer = (new PlumblineAdapter()).createRenderer({mode: 'mount'});
     }
