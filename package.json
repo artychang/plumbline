@@ -45,12 +45,14 @@
     "@angular/compiler": "10.x",
     "@angular/core": "10.x",
     "@angular/forms": "10.x",
-    "@angular/platform-browser": "10.x"
+    "@angular/platform-browser": "10.x",
+    "ng-mocks": "10.x",
+    "zone.js": "0.10.x"
   },
   "typings": "dist/index",
   "license": "MIT",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.24",
+    "@angular-devkit/build-angular": "^0.1000.8",
     "@angular/animations": "10.x",
     "@angular/cli": "10.x",
     "@angular/common": "10.x",
@@ -65,7 +67,6 @@
     "@types/lodash": "^4.14.96",
     "angular-mocks": "^1.7.2",
     "classlist.js": "^1.1.20150312",
-    "codelyzer": "^4.3.0",
     "jasmine-core": "^3.1.0",
     "jsdom": "11.11.0",
     "jsdom-global": "3.0.2",
@@ -77,12 +78,12 @@
     "karma-jasmine": "^1.1.2",
     "karma-jasmine-html-reporter": "^1.1.0",
     "karma-junit-reporter": "^1.2.0",
-    "ng-mocks": "^6.3.0",
+    "ng-mocks": "^10.3.0",
     "primeng": "6.1.7",
-    "rxjs": "6.0.0",
+    "rxjs": "^6.6.3",
     "ts-node": "^6.1.1",
     "tslint": "^5.11.0",
-    "typescript": "^4.0.3",
+    "typescript": "^3.9.7",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.10.3"
   }
