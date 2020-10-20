@@ -6,10 +6,10 @@
     "plumbline": {
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
+      "projectType": "library",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
