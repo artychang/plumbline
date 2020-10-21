@@ -329,9 +329,9 @@ describe('Tester', () => {
             expect(setup.getCompleteModule().imports[1].name)
                 .toEqual(createMockImport(TestComponent3).name);
             expect(setup.getCompleteModule().imports[2].name)
-                .toEqual(createMockImport(TestModule2).name);
-            expect(setup.getCompleteModule().imports[3].name)
                 .toEqual(createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(createMockImport(TestModule2).name);
             expect(setup.getCompleteModule().imports[4].name)
                 .toEqual(createMockImport(TestModule3).name);
         });
@@ -388,13 +388,13 @@ describe('Tester', () => {
             expect(setup.getCompleteModule().imports[0].name)
                 .toEqual(createMockImport(TestComponent2).name);
             expect(setup.getCompleteModule().imports[1].name)
-                .toEqual(createMockImport(TestModule1).name);
-            expect(setup.getCompleteModule().imports[2].name)
                 .toEqual(createMockImport(TestComponent3).name);
-            expect(setup.getCompleteModule().imports[3].name)
-                .toEqual(createMockImport(TestModule2).name);
-            expect(setup.getCompleteModule().imports[4].name)
+            expect(setup.getCompleteModule().imports[2].name)
                 .toEqual(createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(createMockImport(TestModule1).name);
+            expect(setup.getCompleteModule().imports[4].name)
+                .toEqual(createMockImport(TestModule2).name);
             expect(setup.getCompleteModule().imports[5].name)
                 .toEqual(createMockImport(TestModule3).name);
         });
@@ -590,7 +590,6 @@ describe('Tester', () => {
             expect(setup).not.toEqual(null);
             let tmodule = setup.getCompleteModule();
 
-            // console.log(tmodule);
             expect(JSON.stringify(tmodule)).toEqual(JSON.stringify({
                 imports: [null, null, null, null, null, [null]],
                 declarations: [null],
@@ -602,7 +601,6 @@ describe('Tester', () => {
 
             // RouterTestingModule mock import created
             expect(tmodule.imports.length).toEqual(6);
-            // expect(tmodule.imports[0].name).toEqual(createMockImport(RouterModule).name);
 
             // TestComponent was created
             expect(tmodule.declarations.length).toEqual(1);

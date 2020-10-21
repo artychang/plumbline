@@ -450,7 +450,7 @@ describe('Mount', () => {
 
     describe('Complex Component - Load Entry Components', () => {
 
-        it('Simple Mock Render - Real Mounting', async () => {
+        it('Simple Mock Render - Real Mounting #1', async () => {
             let complexComp = await mount<EntryUseComponent1>(
                 `<entry-use-component-1></entry-use-component-1>`,
                 EntryUseComponent1, {
@@ -460,6 +460,21 @@ describe('Mount', () => {
                 });
             expect(complexComp.element()).not.toEqual(null);
             expect(complexComp.element().innerHTML).toContain('<p>Entry Use Component 1</p>');
+        });
+
+        it('Simple Mock Render - Real Mounting #2', async () => {
+            let complexComp = await mount<SimpleComponent>(
+                `<simple-component></simple-component>`,
+                SimpleComponent, {
+                    mountModule: {
+                        imports: [EntryModule2]
+                    }
+                });
+            expect(complexComp.element()).not.toEqual(null);
+            expect(complexComp.element().innerHTML).toContain('<h1>This is Simple</h1>');
+            expect(complexComp.element().innerHTML).not.toContain('<h1>Title 1</h1>');
+            expect(complexComp.element().innerHTML).not.toContain('<p>Text 2</p>');
+            expect(complexComp.find('h1').length).toEqual(1);
         });
 
         it('Import Module Mock', async () => {

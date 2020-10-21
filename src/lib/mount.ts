@@ -6,6 +6,5 @@ export function mount<T>(
     testModule?: any,
     options?: any): Promise<PlumblineWrapper<T>>
 {
-    console.log('mount PlumblineWrapper');
     return (new PlumblineWrapper<T>()).create(node, testComponent, testModule, options).render();
 }

@@ -57,11 +57,10 @@ export declare class Tester<T> {
         schemas: any;
     };
     processModule(mod: any, dontmock?: boolean): void;
-    listDec(thing: any, dontmock: boolean, addedImports?: any[], runningList?: any[]): any;
-    cacheDec(thing: any, dontmock: boolean, addedImports?: any[]): any[];
+    decToImportRef(thing: any, dontmock: boolean, addedImports?: any[], runningList?: any[]): any;
     baseDec(thingList: any[], dontmock: boolean, addedImports?: any[]): void;
     mockProv(thing: any, mod: any, dontmock?: boolean): void;
-    cacheImp(thing: any, dontmock?: boolean, exportmock?: boolean): any[];
+    impToImportRef(thing: any, dontmock?: boolean, exportmock?: boolean): any[];
     baseImp(thingList: any[], dontmock?: boolean): void;
 }
 export declare function createMockDeclaration(inDeclaration: any): any;

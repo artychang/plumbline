@@ -9,7 +9,6 @@ class PlumblineWrapper {
         this.renderPromise = null;
         this.rendering = null;
         this.currentElement = null;
-        console.log('PlumblineWrapper constructor');
         // Generate a renderer for mount operation
         this.renderer = (new PlumblineAdapter_1.default()).createRenderer({ mode: 'mount' });
     }
@@ -23,7 +22,6 @@ class PlumblineWrapper {
      */
     create(nodes, testComponent, testModule, options) {
         this.renderPromise = this.renderer.render(nodes, options ? options : {}, testComponent, testModule ? testModule : {});
-        console.log('PlumblineWrapper create');
         return this;
     }
     existing(unrendering, rendering, current) {
@@ -37,7 +35,6 @@ class PlumblineWrapper {
      * @returns {Promise<PlumblineWrapper<T>>}
      */
     async render() {
-        console.log('PlumblineWrapper render');
         return new Promise((resolve, reject) => {
             this.renderPromise.then((rendering) => {
                 this.rendering = rendering;
