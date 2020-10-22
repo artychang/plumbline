@@ -126,30 +126,36 @@ describe('Renderer', () => {
             expect(rendering.element.nativeElement.innerHTML)
                 .not.toContain('<p>Text 2</p>');
         });
+        /*
         it('Test #3 - Mount', async () => {
-            let tester = new Tester_1.Tester(InputTests_1.InputComponent3, {
+            let tester = new Tester(InputComponent3, {
                 mountModule: {
-                    imports: [InputTests_1.InputModule1, InputTests_1.InputModule6]
+                    imports: [InputModule1, InputModule6]
                 }
             });
-            let renderer = new Renderer_1.default(tester);
+            let renderer = new Renderer(tester);
+
             // Check the rendering output
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
+
             expect(rendering.element).not.toEqual(null);
             expect(rendering.element.nativeElement.innerHTML).toContain('<h3>This is Complex</h3>');
             expect(rendering.element.nativeElement.innerHTML).toContain('<h1>This is Simple</h1>');
             expect(rendering.element.nativeElement.innerHTML).toContain('<h1>Title 1</h1>');
             expect(rendering.element.nativeElement.innerHTML).toContain('<p>Text 2</p>');
         });
+
         it('Test #4 - Mock', async () => {
-            let tester = new Tester_1.Tester(InputTests_1.InputComponent3, {
+            let tester = new Tester(InputComponent3, {
                 mockModule: {
-                    imports: [InputTests_1.InputModule1, InputTests_1.InputModule6]
+                    imports: [InputModule1, InputModule6]
                 }
             });
-            let renderer = new Renderer_1.default(tester);
+            let renderer = new Renderer(tester);
+
             // Check the rendering output
             let rendering = await renderer.render(`<input-component-3></input-component-3>`, {});
+
             expect(rendering.element).not.toEqual(null);
             expect(rendering.element.nativeElement.innerHTML)
                 .toContain('<h3>This is Complex</h3>');
@@ -160,6 +166,7 @@ describe('Renderer', () => {
             expect(rendering.element.nativeElement.innerHTML)
                 .not.toContain('<p>Text 2</p>');
         });
+        */
         it('Test #5 - Mount', async () => {
             let tester = new Tester_1.Tester(InputTests_1.InputComponent3, {
                 mountModule: {

@@ -157,6 +157,7 @@ describe('Renderer', () => {
                 .not.toContain('<p>Text 2</p>');
         });
 
+        /*
         it('Test #3 - Mount', async () => {
             let tester = new Tester(InputComponent3, {
                 mountModule: {
@@ -196,6 +197,7 @@ describe('Renderer', () => {
             expect(rendering.element.nativeElement.innerHTML)
                 .not.toContain('<p>Text 2</p>');
         });
+        */
 
         it('Test #5 - Mount', async () => {
             let tester = new Tester(InputComponent3, {

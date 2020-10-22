@@ -337,9 +337,9 @@ describe('Tester', () => {
             expect(setup.getCompleteModule().imports[1].name)
                 .toEqual(Tester_1.createMockImport(TestComponent3).name);
             expect(setup.getCompleteModule().imports[2].name)
-                .toEqual(Tester_1.createMockImport(TestModule2).name);
-            expect(setup.getCompleteModule().imports[3].name)
                 .toEqual(Tester_1.createMockImport(TestComponent4).name);
+            expect(setup.getCompleteModule().imports[3].name)
+                .toEqual(Tester_1.createMockImport(TestModule2).name);
             expect(setup.getCompleteModule().imports[4].name)
                 .toEqual(Tester_1.createMockImport(TestModule3).name);
         });
@@ -396,11 +396,11 @@ describe('Tester', () => {
             expect(setup.getCompleteModule().imports[1].name)
                 .toEqual(Tester_1.createMockImport(TestComponent3).name);
             expect(setup.getCompleteModule().imports[2].name)
-                .toEqual(Tester_1.createMockImport(TestModule2).name);
+                .toEqual(Tester_1.createMockImport(TestComponent4).name);
             expect(setup.getCompleteModule().imports[3].name)
                 .toEqual(Tester_1.createMockImport(TestModule1).name);
             expect(setup.getCompleteModule().imports[4].name)
-                .toEqual(Tester_1.createMockImport(TestComponent4).name);
+                .toEqual(Tester_1.createMockImport(TestModule2).name);
             expect(setup.getCompleteModule().imports[5].name)
                 .toEqual(Tester_1.createMockImport(TestModule3).name);
         });

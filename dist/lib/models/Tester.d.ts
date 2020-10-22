@@ -57,7 +57,7 @@ export declare class Tester<T> {
         schemas: any;
     };
     processModule(mod: any, dontmock?: boolean): void;
-    decToImportRef(thing: any, dontmock: boolean, addedImports?: any[], runningList?: any[]): any;
+    decToImportRef(thing: any, dontmock: boolean, addedImports?: any[], postProcessDecs?: any[]): any;
     baseDec(thingList: any[], dontmock: boolean, addedImports?: any[]): void;
     mockProv(thing: any, mod: any, dontmock?: boolean): void;
     impToImportRef(thing: any, dontmock?: boolean, exportmock?: boolean): any[];

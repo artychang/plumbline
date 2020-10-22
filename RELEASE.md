@@ -8,7 +8,7 @@ Release
 Before distributing a new version, verify that the current build succeeds
 
 ```
-npm run build:all
+npm run build:release
 ```
 
 ### 1. Version upgrade

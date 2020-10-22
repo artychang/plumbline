@@ -104,12 +104,10 @@ class Tester {
         this.dontMock.push(...Array.isArray(this.options.dontMock) ? this.options.dontMock : []);
     }
     getCompleteModule() {
-        console.log('Tester getCompleteModule', this.testComponent);
         // Process the test component in question first
         this.processModule({
             declarations: [this.testComponent]
         }, true);
-        console.log('Test getCompleteModule #1', copyModule(this.completeModule));
         // Process the mount module next
         let mountModule = this.mountModule ? copyModule(resolveModule(this.mountModule)) : {
             imports: [],
@@ -132,9 +130,7 @@ class Tester {
         this.completeModule.schemas = mountModule.schemas.concat(mockModule.schemas);
         // Process both modules
         this.processModule(mountModule, true);
-        console.log('Test getCompleteModule #2', copyModule(this.completeModule));
         this.processModule(mockModule, false);
-        console.log('Test getCompleteModule #3', copyModule(this.completeModule));
         let completeModule = this.completeModule;
         return completeModule;
     }
@@ -163,9 +159,11 @@ class Tester {
     //   Declarations
     // ++++++++++++++++++++++++++++++++++++++++
     // Check the cache for this particular declaration or list of declarations
-    // @param thing - component declaration
-    // @return - module reference to be imported
-    decToImportRef(thing, dontmock, addedImports = [], runningList = []) {
+    // @param thing - component declarations
+    // @return - a singular module reference to containing declarations
+    // and all required imports in one package
+    decToImportRef(thing, dontmock, addedImports = [], postProcessDecs = []) {
+        // Create a single import reference package
         let resmod = createPropImport(thing, {
             declarations: [],
             imports: [],
@@ -174,11 +172,12 @@ class Tester {
             schemas: this.completeModule.schemas
         });
         let resobj = resolveModule(resmod);
-        // do not cache the test component in question
-        if (thing === this.testComponent) {
+        // Throw back an empty import reference
+        if (postProcessDecs.includes(thing)) {
             return resmod;
         }
         // check to see if declaration is in cache
+        // caching is only done after each complete module
         if (this.cacheModule.declarations.has(thing)) {
             // Add the cached module containing the declaration to imports
             resobj.imports.push(this.cacheModule.declarations.get(thing));
@@ -188,8 +187,9 @@ class Tester {
         // Breakdown arrays recursively
         if (Array.isArray(thing)) {
             thing.forEach((single) => {
-                if (single && !runningList.includes(single)) {
-                    let tempDec = resolveModule(this.decToImportRef(single, dontmock, addedImports, runningList));
+                if (single) {
+                    let tempDec = resolveModule(this.decToImportRef(single, dontmock, addedImports, postProcessDecs));
+                    // Assign the module properties to this aggregate module
                     resobj.imports.push(...tempDec.imports);
                     resobj.declarations.push(...tempDec.declarations);
                     resobj.exports.push(...tempDec.exports);
@@ -212,70 +212,33 @@ class Tester {
                         ((thing && thing.name) ? thing.name : thing) + '.\n' + e);
                 }
             }
+            // Assign the module properties to this aggregate module
+            resobj.imports.push(...addedImports);
             resobj.declarations.push(pointer);
             resobj.exports.push(pointer);
-            runningList.push(thing);
+            postProcessDecs.push(thing);
         }
         // Cache all declarations traversed under this response module
-        runningList.forEach((single) => {
+        // Overwrite all declarations to point to the final module
+        // Keep this last!
+        postProcessDecs.forEach((single) => {
             this.cacheModule.declarations.set(single, resmod);
         });
-        resobj.imports.push(...addedImports);
         return resmod;
     }
-    /*
-    // Check the cache for this particular declaration or list of declarations
-    cacheDec(thing: any, dontmock: boolean, addedImports: any[] = []): any[] {
-
-        // do not cache the test component in question
-        if (thing === this.testComponent) { return []; }
-
-        // check to see if declaration is in cache
-        if (!this.cacheModule.declarations.has(thing)) {
-
-            // Breakdown arrays
-            if (Array.isArray(thing)) {
-                let decList = [];
-                thing.forEach((single) => {
-                    decList.push(...this.cacheDec(single, dontmock, addedImports));
-                });
-                return decList;
-            }
-
-            let pointer = null;
-
-            // use the regular component if we specify
-            if (this.dontMock.includes(thing) || dontmock) {
-                pointer = thing;
-
-            } else { // actually mock the component
-                try {
-                    pointer = createMockDeclaration(thing);
-                } catch (e) {
-                    throw new Error('Plumbline had trouble mocking ' +
-                        ((thing && thing.name) ? thing.name : thing) + '.\n' + e);
-                }
-            }
-
-            pointer = createPropImport(thing, {
-                declarations: [pointer],
-                imports: addedImports,
-                exports: [pointer],
-                schemas: this.completeModule.schemas
-            });
-
-            this.cacheModule.declarations.set(thing, pointer);
-            return [pointer];
-
-        } else { // return a module wrapper for declarations already in cache
-            return [this.cacheModule.declarations.get(thing)];
-        }
-    }
-    */
     // Mocking declaration components
     baseDec(thingList, dontmock, addedImports = []) {
         thingList.forEach((thing) => {
+            if (!thing) {
+                return;
+            }
+            // Breakdown arrays within declarations
+            if (Array.isArray(thing)) {
+                this.baseDec(thing, dontmock, addedImports);
+                return;
+            }
             // Exit if the base module already has the declaration
+            // Monitor base module and prioritize its declarations
             if (this.baseModule.declarations.has(thing)) {
                 return;
             }
@@ -284,26 +247,27 @@ class Tester {
                 if (this.cacheModule.declarations.has(thing)) {
                     return;
                 }
+                /*
+                // Create a single import reference package
+                let resmod = createPropImport(thing, {
+                    declarations: [],
+                    imports: [],
+                    exports: [],
+                    entryComponents: [],
+                    schemas: this.completeModule.schemas
+                });
+                */
                 this.completeModule.declarations.push(thing);
-                this.cacheModule.declarations.set(thing, thing);
                 this.baseModule.declarations.add(thing);
+                // this.cacheModule.declarations.set(thing, resmod);
                 return;
             }
-            // Breakdown arrays
-            if (Array.isArray(thing)) {
-                this.baseDec(thing, dontmock, addedImports);
-                return;
-            }
-            // let pointerList = this.cacheDec(thing, dontmock, addedImports);
-            // if (pointerList.length > 0) {
-            //     this.completeModule.imports.push(...pointerList);
-            //     this.baseModule.declarations.add(thing);
-            // }
-            if (thing) {
-                let pointerList = this.decToImportRef(thing, dontmock, addedImports);
-                this.completeModule.imports.push(pointerList);
-                this.baseModule.declarations.add(thing);
-            }
+            // Otherwise convert the rest of the declarations into import references
+            let tempMod = this.decToImportRef(thing, dontmock, addedImports);
+            let tempObj = resolveModule(tempMod);
+            // tempObj.declarations.push(this.testComponent);
+            this.completeModule.imports.push(tempMod);
+            this.baseModule.declarations.add(thing);
         });
     }
     // ++++++++++++++++++++++++++++++++++++++++
@@ -444,19 +408,6 @@ class Tester {
     // Create list of import modules - starting point
     // @param thingList - list of modules to import
     baseImp(thingList, dontmock) {
-        /*
-        thingList.forEach((thing) => {
-            // Breakdown arrays within this list recursively
-            if (Array.isArray(thing)) {
-                this.baseImp(thing, dontmock);
-                return;
-            }
-
-            // Convert modules to references to be imported
-            let pointerList = this.impToImportRef(thingList, dontmock);
-            this.completeModule.imports.push(...pointerList);
-        });
-        */
         // Convert modules to references to be imported
         let pointerList = this.impToImportRef(thingList, dontmock);
         this.completeModule.imports.push(...pointerList);
