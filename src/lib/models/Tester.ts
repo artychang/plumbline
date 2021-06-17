@@ -1,4 +1,5 @@
-import {MockDeclaration, MockOf} from 'ng-mocks';
+import {MockDeclaration} from 'ng-mocks';
+import {MockOf} from 'ng-mocks/dist/lib/common/mock-of';
 import {NgModule} from '@angular/core';
 import {resolveNgModule, isModuleWithProviders, isNgModule} from './../utils/utils';
 import {CommonModule} from '@angular/common';

@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createMockProvider = exports.createPropImport = exports.createMockImport = exports.createMockDeclaration = exports.Tester = exports.copyModule = exports.resolveModule = void 0;
 const ng_mocks_1 = require("ng-mocks");
+const mock_of_1 = require("ng-mocks/dist/lib/common/mock-of");
 const core_1 = require("@angular/core");
 const utils_1 = require("./../utils/utils");
 /**
@@ -430,7 +431,7 @@ function createMockImport(inImport) {
             providers: [],
             schemas: []
         }),
-        ng_mocks_1.MockOf(inImport)
+        mock_of_1.MockOf(inImport)
     ], MockModuleContainer);
     return MockModuleContainer;
 }
@@ -456,7 +457,7 @@ function createPropImport(inImport, propImport) {
     };
     MockModuleContainer = __decorate([
         core_1.NgModule(modA),
-        ng_mocks_1.MockOf(inImport)
+        mock_of_1.MockOf(inImport)
     ], MockModuleContainer);
     return MockModuleContainer;
 }
