@@ -22,12 +22,15 @@ npm i --save-dev plumbline
 
 Angular version support is as follows:
 
-| Plumbline    | Angular | Installation                 |
-| ------------ | ------- | ---------------------------- |
-| 5.x.x        | 5.x     | npm i --save-dev plumbline@5 |
-| 6.x.x        | 6.x     | npm i --save-dev plumbline   |
-| TBD          | 7.x     | TBD                          |
-| TBD          | 8.x     | TBD                          |
+| Plumbline    | Angular | Installation                  |
+| ------------ | ------- | ----------------------------- |
+| 5.x.x        | 5.x     | npm i --save-dev plumbline@5  |
+| 6.x.x        | 6.x     | npm i --save-dev plumbline@6  |
+| TBD          | 7.x     | TBD                           |
+| TBD          | 8.x     | TBD                           |
+| TBD          | 9.x     | TBD                           |
+| 10.x.x       | 10.x    | npm i --save-dev plumbline@10 |
+
 
 Basic Usage
 --------
