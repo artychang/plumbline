@@ -46,7 +46,7 @@
   "peerDependencies": {
     "@angular/common": "10.x",
     "@angular/compiler": "10.x",
-    "@angular/core": "10.x",
+    "@angular/core": "11.x",
     "@angular/forms": "10.x",
     "@angular/platform-browser": "10.x",
     "ng-mocks": "10.x",
@@ -61,7 +61,7 @@
     "@angular/common": "10.x",
     "@angular/compiler": "10.x",
     "@angular/compiler-cli": "10.x",
-    "@angular/core": "10.x",
+    "@angular/core": "11.x",
     "@angular/forms": "10.x",
     "@angular/platform-browser": "10.x",
     "@angular/platform-browser-dynamic": "10.x",
